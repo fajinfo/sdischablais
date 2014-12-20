@@ -1,0 +1,40 @@
+{# app/Resources/views/layoutSDIS.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %} SDIS Chablais {% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	{% stylesheets filter='cssrewrite' 'css/sdis.css' %}
+	<link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
+	{% endstylesheets %}
+{% endblock %}
+{% block navigation %}
+	<div class="navbar-header">
+	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+	<p class="visible-xs-inline navbar-brand"><a href="{{ path('sdis_accueil') }}"><img src="{{ asset('img/LogoMobile.png') }}" height="55px" alt="SDIS Chablais"/></a></p>
+	</div>
+	<div class="collapse navbar-collapse">
+	<ul class="nav nav-justified">
+		<li><a href="{{ path('sdis_accueil') }}">ACCUEIL</a></li>
+		<li><a href="{{ path('sdis_organisation') }}">ORGANISATION</a></li>
+		<li><a href="">INTERVENTIONS</a></li>
+		<li class="logo hidden-xs"><a href="{{ path('sdis_accueil') }}"><img src="{{ asset('img/SDISChablais.png') }}" alt=""/></a></li>
+		<li><a href="">EXERCICES</a></li>
+		<li><a href="{{ path('sdis_vehicules') }}">VEHICULES</a></li>
+		<li><a href="{{ path('jsp_liens') }}">LIENS</a></li>
+		<li><a href="{{ path('sdis_contact') }}">CONTACT</a></li>
+	</ul>
+	</div>
+{% endblock %}
+{% block coteDroit %}
+{{ render(controller("JspDynamiqueBundle:Default:block")) }}
+{% endblock %}
+{% block sousHeader %}
+<h1>SDIS CHABLAIS</h1>
+{% endblock %}

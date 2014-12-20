@@ -1,0 +1,12 @@
+jsp_evenements:
+    path: /exercices
+    defaults: { _controller: JspDynamiqueBundle:Default:evenements }
+jsp_liens:
+    path:     /liens
+    defaults: { _controller: JspDynamiqueBundle:Default:liens }
+jsp_exercice_pdf:
+    path:     /exercices/{annee}.{_format}
+    defaults: { _controller: JspDynamiqueBundle:Default:genererPDF }
+    requirements:
+        annee: \d{4}
+        _format: pdf

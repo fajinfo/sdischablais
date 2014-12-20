@@ -1,0 +1,4 @@
+services:
+#    sdis_contact.example:
+#        class: Sdis\ContactBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

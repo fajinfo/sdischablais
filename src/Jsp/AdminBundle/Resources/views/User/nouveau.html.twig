@@ -1,0 +1,47 @@
+{% extends "JspAdminBundle::layout.html.twig" %}
+
+{% form_theme form _self %}
+
+{% block password_widget %}
+	<div class="input-group">
+		<span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
+		{{ form_widget(form, { 'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'} }) }}
+	</div>
+{% endblock %}
+
+{% block corps %}
+<h1>UTILISATEURS</h1>
+<form method="post" {{ form_enctype(form) }} role="form">
+	<div class="form-group">
+			{% if form_errors(form.username) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.username) }}</div>{% endif %}
+			<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+			{{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Nom d\'utilisateur'} }) }}
+			</div>
+	</div>
+	<div class="form-group">
+		{% if form_errors(form.email) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.email) }}</div>{% endif %}
+			<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+			{{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'E-Mail'} }) }}
+			</div>
+	</div>
+	<div class="form-group">
+		{% if form_errors(form.enabled) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.enabled) }}</div>{% endif %}
+		<div class="input-group">
+			<span class="input-group-addon">{{ form_widget(form.enabled) }}</span>
+			<span class="form-control">Utilisateur activé ?</span> 
+		</div>
+	</div>
+	<div class="form-group">
+		{% if form_errors(form.roles) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.roles) }}</div>{% endif %}
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-eye-close"></span></span>
+			{{ form_widget(form.roles, { 'attr': {'class': 'form-control'} }) }}
+		</div>
+	</div>
+	
+	{{ form_rest(form) }}
+	<input type="submit" class="btn btn-primary" />
+</form>
+{% endblock %}

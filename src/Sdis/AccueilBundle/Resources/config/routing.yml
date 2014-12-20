@@ -1,0 +1,9 @@
+sdis_accueil:
+    path:     /
+    defaults: { _controller: SdisAccueilBundle:Default:index }
+sdis_organisation:
+    path:     /organisation
+    defaults: { _controller: SdisAccueilBundle:Default:organisation }
+sdis_vehicules:
+    path:     /vehicules
+    defaults: { _controller: SdisAccueilBundle:Default:vehicules }

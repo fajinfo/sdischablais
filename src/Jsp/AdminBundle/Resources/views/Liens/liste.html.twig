@@ -1,0 +1,26 @@
+{% extends "JspAdminBundle::layout.html.twig" %}
+
+{% block corps %}
+<h1>LIENS</h1>
+<div class="btn-group">
+	<a href="{{ path('jsp_admin_liens_nouveau') }}" class="btn btn-primary">Nouveau Lien</a>
+</div>
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Nom</th>
+		<th>Url</th>
+		<th>Action</th>
+	</tr>
+	</thead>
+	<tbody>
+		{% for lien in liens %}
+		<tr>
+			<td>{{ lien.nom }}</td>
+			<td>{{ lien.url }}</td>
+			<td><a href="{{ path('jsp_admin_liens_modifier', { 'id': lien.id }) }}" title="Editer"><span class="glyphicon glyphicon-pencil"></span></a> <a href="{{ path('jsp_admin_liens_supprimer', { 'id': lien.id }) }}" title="Supprimer"><span class="glyphicon glyphicon-remove"></span></a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

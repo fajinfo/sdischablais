@@ -1,0 +1,17 @@
+{% extends "JspAdminBundle::layout.html.twig" %}
+
+{% block corps %}
+<h1>UTILISATEURS</h1>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">Voulez vous vraiment supprimer l'utilisateur ?</h3>
+  </div>
+  <div class="panel-body">
+    <p>{{ user.username }} </p>
+	<div class="btn-group">
+		<a href="{{ path('jsp_admin_user_liste') }}" class="btn btn-success">Retour</a>
+		<a href="{{ path('jsp_admin_user_supprimerok', { 'id': user.id }) }}" class="btn btn-danger">Supprimer</a>
+	</div>
+  </div>
+</div>
+{% endblock %}

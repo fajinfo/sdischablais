@@ -1,0 +1,37 @@
+sdis_admin:
+    resource: "@SdisAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sdis_dynamique:
+    resource: "@SdisDynamiqueBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sdis_contact:
+    resource: "@SdisContactBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sdis_accueil:
+    resource: "@SdisAccueilBundle/Resources/config/routing.yml"
+    prefix:   /
+
+jsp_dynamique:
+    resource: "@JspDynamiqueBundle/Resources/config/routing.yml"
+    prefix:   /
+
+console:
+    resource: "@CoreSphereConsoleBundle/Resources/config/routing.yml"
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+jsp_admin:
+    resource: "@JspAdminBundle/Resources/config/routing.yml"
+    prefix: /

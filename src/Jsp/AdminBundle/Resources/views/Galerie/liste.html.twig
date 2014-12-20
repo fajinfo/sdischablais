@@ -1,0 +1,56 @@
+{% extends "JspAdminBundle::layout.html.twig" %}
+
+{% block corps %}
+<h1>GALERIE</h1>
+<div class="btn-group">
+	<a href="{{ path('jsp_admin_galerie_nouvelleGalerie') }}" class="btn btn-primary">Nouvelle Galerie</a>
+</div>
+<p>
+	<ol class="breadcrumb">
+		{% for param in filAriane %}
+			<li><a href="{{ path('jsp_admin_galerie_liste', { 'parent': param }) }}">
+			{% if param == "root" %}
+				Photos
+			{% else %}
+				{{ param }}
+			{% endif %}
+			</a></li>
+		{% endfor %}
+	</ol>
+</p>
+{% if galeries|length > 0 %}
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Titre</th>
+		<th>Description</th>
+		<th>Action</th>
+	</tr>
+	</thead>
+	<tbody>
+		{% for galerie in galeries %}
+		<tr>
+			<td><a href="{{ path('jsp_admin_galerie_liste', { 'parent': galerie.titre }) }}">{{ galerie.titre }}</a></td>
+			<td>{{ galerie.description }}</td>
+			<td><a href="{{ path('jsp_admin_galerie_modifier', { 'id': galerie.id }) }}" title="Modifier"><span class="glyphicon glyphicon-pencil"></span></a> <a href="{{ path('jsp_admin_galerie_supprimerGalerie', { 'id': galerie.id }) }}" title="Supprimer"><span class="glyphicon glyphicon-remove"></span></a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endif %}
+<div class="btn-group">
+	<a href="{{ path('jsp_admin_galerie_nouvellePhoto', { 'parent': titreGalParente} ) }}" class="btn btn-primary">Nouvelle Photo</a>
+</div>
+{% if photos|length > 0 %}
+<div class="row spacer">
+    {% for photo in photos %}
+	<div class="col-xs-6 col-md-3">
+		<a href="{{ path('jsp_admin_galerie_supprimerPhoto', { 'id' : photo.id }) }}" class="thumbnail">
+			<img src="{{ asset(photo.getWebPath | apply_filter('mignature') ) }}" alt=""/>
+		</a>
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}

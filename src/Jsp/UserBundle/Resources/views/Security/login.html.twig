@@ -1,0 +1,22 @@
+{% extends "JspUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+{% if error %}
+<div class="alert alert-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin" role="form">
+<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+<h2 class="form-signin-heading">Connexion</h2>
+<input type="text" id="username" name="_username" class="form-control" placeholder="Nom d'utilisateur" required="required" autofocus="autofocus"/>
+
+<input type="password" class="form-control" placeholder="Mot de passe" id="password" name="_password" required="required" />
+
+
+<input type="submit" id="_submit" name="_submit" class="btn btn-lg btn-primary btn-block" value="Connexion" />
+</form>
+
+{% endblock fos_user_content %}

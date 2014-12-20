@@ -1,0 +1,50 @@
+{% extends "JspAdminBundle::layout.html.twig" %}
+
+{% form_theme form _self %}
+
+{% block datetime_widget %}
+<div class="row">
+	<div class="col-xs-2">{{ form_widget(form.date.day, { 'attr': {'class': 'form-control'} }) }}</div>
+	<div class="col-xs-2">{{ form_widget(form.date.month, { 'attr': {'class': 'form-control'} }) }}</div>
+    <div class="col-xs-2">{{ form_widget(form.date.year, { 'attr': {'class': 'form-control'} }) }}</div>
+	<div class="col-xs-2"></div>
+	<div class="col-xs-2">{{ form_widget(form.time.hour, { 'attr': {'class': 'form-control'} }) }}</div>
+	<div class="col-xs-2">{{ form_widget(form.time.minute, { 'attr': {'class': 'form-control'} }) }}</div>
+</div>
+{% endblock %}
+
+{% block corps %}
+<h1>EVENEMENTS</h1>
+<form method="post" {{ form_enctype(form) }} role="form">
+	<div class="form-group">
+			{% if form_errors(form.titre) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.titre) }}</div>{% endif %}
+			<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-header"></span></span>
+			{{ form_widget(form.titre, { 'attr': {'class': 'form-control', 'placeholder': 'Titre'} }) }}
+			</div>
+		</div>
+	<div class="form-group">
+		{% if form_errors(form.description) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.description) }}</div>{% endif %}
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-exclamation-sign"></span></span>
+			{{ form_widget(form.description, { 'attr': {'class': 'form-control', 'placeholder': 'Description'} }) }}
+		</div>
+	</div>
+	<div class="form-group">
+		{% if form_errors(form.date) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.date) }}</div>{% endif %}
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-step-backward"></span></span>
+			{{ form_widget(form.date) }}
+		</div>
+	</div>
+	<div class="form-group">
+		{% if form_errors(form.dateFin) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.dateFin) }}</div>{% endif %}
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-step-forward"></span></span>
+			{{ form_widget(form.dateFin) }}
+		</div>
+	</div>
+	{{ form_rest(form) }}
+	<input type="submit" class="btn btn-primary" />
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "JspAdminBundle::layout.html.twig" %}
+
+{% block corps %}
+<h1>UTILISATEURS</h1>
+<div class="btn-group">
+	<a href="{{ path('jsp_admin_user_nouveau') }}" class="btn btn-primary">Nouvel Utilisateur</a>
+</div>
+<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Nom d'utilisateur</th>
+		<th>E-Mail</th>
+		<th>Action</th>
+	</tr>
+	</thead>
+	<tbody>
+		{% for user in users %}
+		<tr>
+			<td>{{ user.username }}</td>
+			<td>{{ user.email }}</td>
+			<td><a href="{{ path('jsp_admin_user_modifier', { 'id': user.id }) }}" title="Editer"><span class="glyphicon glyphicon-pencil"></span></a> <a href="{{ path('jsp_admin_user_supprimer', { 'id': user.id }) }}" title="Supprimer"><span class="glyphicon glyphicon-remove"></span></a> <a href="{{ path('jsp_admin_user_changePassword', { 'id': user.id }) }}" title="Changer le mot de passe"><span class="glyphicon glyphicon-barcode"></span></a></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "::layoutJSP.html.twig" %}
+
+{% block corps %}
+<h1>EXERCICES</h1>
+<table class="table table-bordered">
+	<tr>
+		<th>Date</th>
+		<th>Horaire</th>
+		<th>Thème</th>
+		<th>Qui ?</th>
+	</tr>
+	
+	{% for evenement in evenements %}
+	<tr>
+		<td>{{ evenement.date|date('d/m/Y') }}</td>
+		<td>{{ evenement.date|date('H\\hi') }} -> {{ evenement.dateFin|date('H\\hi') }}</td>
+		<td>{{ evenement.titre }}</td>
+		<td>{{ evenement.description }}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

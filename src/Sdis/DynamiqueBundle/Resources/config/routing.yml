@@ -1,0 +1,24 @@
+sdis_nouveautes:
+    path:     /nouveautes
+    defaults: { _controller: SdisDynamiqueBundle:Default:nouveautes }
+sdis_admin_nouveautes:
+    path:   /admin/nouveautes
+    defaults: { _controller: SdisDynamiqueBundle:Admin:listeNouveautes }
+sdis_admin_nouveautes_ajouter:
+    path:   /admin/nouveautes/ajouter
+    defaults: { _controller: SdisDynamiqueBundle:Admin:ajoutNouveautes }
+sdis_admin_nouveautes_modifier:
+    path:   /admin/nouveautes/modifier/{id}
+    defaults: { _controller: SdisDynamiqueBundle:Admin:modifierNouveautes }
+    requirements:
+        id: \d+
+sdis_admin_nouveautes_supprimer:
+    path:   /admin/nouveautes/supprimer/{id}
+    defaults: { _controller: SdisDynamiqueBundle:Admin:supprimerNouveautes }
+    requirements:
+        id: \d+
+sdis_admin_nouveautes_supprimerok:
+    path:   /admin/nouveautes/supprimerok/{id}
+    defaults: { _controller: SdisDynamiqueBundle:Admin:supprimerokNouveautes }
+    requirements:
+        id: \d+

@@ -1,0 +1,17 @@
+{% extends "JspAdminBundle::layout.html.twig" %}
+
+{% block corps %}
+<h1>PHOTOS</h1>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">Voulez vous vraiment supprimer la galerie ?</h3>
+  </div>
+  <div class="panel-body">
+    <p>{{ galerie.titre }} <span>{{ galerie.description }}</span></p>
+	<div class="btn-group">
+		<a href="{{ path('jsp_admin_galerie_liste') }}" class="btn btn-success">Retour</a>
+		<a href="{{ path('jsp_admin_galerie_supprimerGalerieOk', { 'id': galerie.id }) }}" class="btn btn-danger">Supprimer</a>
+	</div>
+  </div>
+</div>
+{% endblock %}

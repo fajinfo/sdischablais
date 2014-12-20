@@ -1,0 +1,4 @@
+services:
+#    sdis_accueil.example:
+#        class: Sdis\AccueilBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

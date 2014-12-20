@@ -1,0 +1,3 @@
+sdis_admin_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SdisAdminBundle:Default:index }

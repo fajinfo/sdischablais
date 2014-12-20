@@ -1,0 +1,18 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+
+{% block corps %}
+<h1>MODIFICATIONS</h1>
+<div class="panel panel-danger">
+<div class="panel-heading">
+<h3 class="panel-title">Voulez vous vraiment supprimer la modification ?</h3>
+</div>
+<div class="panel-body">
+<p>{{ nouveaute.description }} </p>
+<div class="btn-group">
+<a href="{{ path('sdis_admin_nouveautes') }}" class="btn btn-success">Retour</a>
+<a href="{{ path('sdis_admin_nouveautes_supprimerok', { 'id': nouveaute.id }) }}" class="btn btn-danger">Supprimer</a>
+</div>
+</div>
+</div>
+{% endblock %}

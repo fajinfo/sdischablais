@@ -1,0 +1,10 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+
+{% block corps %}
+<h1>MODIFICATIONS</h1>
+<form method="post" {{ form_enctype(form) }} role="form">
+    {{ form_rest(form) }}
+    <input type="submit" class="btn btn-primary" />
+</form>
+{% endblock %}

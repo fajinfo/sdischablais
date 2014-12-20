@@ -1,0 +1,12 @@
+{% extends "::layoutJSP.html.twig" %}
+
+{% block corps %}
+<h1>LIENS</h1>
+<p>
+<ul>
+{% for lien in liens %}
+	<li><a href="{{ lien.url|raw }}">{{ lien.nom }}</a></li>
+{% endfor %}
+</ul>
+</p>
+{% endblock %}

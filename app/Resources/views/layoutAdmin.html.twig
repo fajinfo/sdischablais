@@ -1,0 +1,38 @@
+{# app/Resources/views/layoutAdmin.html.twig #}
+
+{% extends "::layoutSDIS.html.twig" %}
+
+{% block title %} Administration {% endblock %}
+
+{% block sousHeader %}
+<h1>ADMINISTRATION</h1>
+{% endblock %}
+
+{% block row %}
+<div class="col-sm-3 col-md-2 sidebar">
+<ul class="nav nav-sidebar">
+{% if is_granted('ROLE_CHAUFFEUR') %}
+<li><a href="{# path('jsp_admin_galerie_liste') #}"><span class="glyphicon glyphicon-record"></span> Véhicules</a></li>
+{% endif %}
+{% if is_granted('ROLE_PHOTOGRAPHE') %}
+<li><a href="{# path('jsp_admin_galerie_liste') #}"><span class="glyphicon glyphicon-camera"></span> Galerie</a></li>
+{% endif %}
+{% if is_granted('ROLE_ADMIN') %}
+<li><a href="{{ path('jsp_admin_evenements_liste') }}"><span class="glyphicon glyphicon-calendar"></span> Evenements</a></li>
+<li><a href="{{ path('jsp_admin_liens_liste') }}"><span class="glyphicon glyphicon-link"></span> Liens</a></li>
+<li><a href="{{ path('sdis_admin_nouveautes') }}"><span class="glyphicon glyphicon-pencil"></span> Modifications</a></li>
+{% endif %}
+{% if is_granted('ROLE_SUPER_ADMIN') %}
+<li><a href="{{ path('console') }}"><span class="glyphicon glyphicon-road"></span> Console Symfony</a></li>
+<li><a href="{{ path('jsp_admin_user_liste') }}"><span class="glyphicon glyphicon-user"></span> Utilisateurs</a></li>
+{% endif %}
+{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+<li><a href="{{ path('fos_user_change_password') }}"><span class="glyphicon glyphicon-user"></span> Changer mon mot de passe</a></li>
+{% endif %}
+</ul>
+</div>
+<div class="col-sm-9 col-md-10 main">
+{% block corps %}
+{% endblock %}
+</div>
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+#    jsp_user.example:
+#        class: Jsp\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

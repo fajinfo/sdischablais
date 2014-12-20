@@ -1,0 +1,23 @@
+{% extends "JspAdminBundle::layout.html.twig" %}
+
+{% block corps %}
+<h1>LIENS</h1>
+<form method="post" {{ form_enctype(form) }} role="form">
+	<div class="form-group">
+			{% if form_errors(form.nom) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.nom) }}</div>{% endif %}
+			<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-header"></span></span>
+			{{ form_widget(form.nom, { 'attr': {'class': 'form-control', 'placeholder': 'Nom'} }) }}
+			</div>
+		</div>
+	<div class="form-group">
+		{% if form_errors(form.url) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.url) }}</div>{% endif %}
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+			{{ form_widget(form.url, { 'attr': {'class': 'form-control', 'placeholder': 'URL'} }) }}
+		</div>
+	</div>
+	{{ form_rest(form) }}
+	<input type="submit" class="btn btn-primary" />
+</form>
+{% endblock %}

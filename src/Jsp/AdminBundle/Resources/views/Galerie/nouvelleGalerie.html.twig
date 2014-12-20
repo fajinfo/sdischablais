@@ -1,0 +1,33 @@
+{% extends "JspAdminBundle::layout.html.twig" %}
+
+{% form_theme form _self %}
+
+
+{% block corps %}
+<h1>GALERIE</h1>
+<form method="post" {{ form_enctype(form) }} role="form">
+	<div class="form-group">
+			{% if form_errors(form.titre) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.titre) }}</div>{% endif %}
+			<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-header"></span></span>
+			{{ form_widget(form.titre, { 'attr': {'class': 'form-control', 'placeholder': 'Titre'} }) }}
+			</div>
+		</div>
+	<div class="form-group">
+		{% if form_errors(form.description) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.description) }}</div>{% endif %}
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-exclamation-sign"></span></span>
+			{{ form_widget(form.description, { 'attr': {'class': 'form-control', 'placeholder': 'Description'} }) }}
+		</div>
+	</div>
+	<div class="form-group">
+		{% if form_errors(form.parente) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.parente) }}</div>{% endif %}
+		<div class="input-group">
+			<span class="input-group-addon"><span class="glyphicon glyphicon-chevron-up"></span></span>
+			{{ form_widget(form.parente, { 'attr': {'class': 'form-control', 'placeholder': 'Galerie Parente'} }) }}
+		</div>
+	</div>
+	{{ form_rest(form) }}
+	<input type="submit" class="btn btn-primary" />
+</form>
+{% endblock %}

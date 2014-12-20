@@ -1,0 +1,61 @@
+{# app/Resources/views/layout.html.twig #}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> {% block title %} {% endblock %} </title>
+		
+		{% block stylesheets %}
+			{% stylesheets  filter='cssrewrite, yui_css'
+			   'css/bootstrap.min.css'
+			   'css/base.css' %}
+			<link rel="stylesheet" href="{{ asset_url }}" type="text/css">
+			{% endstylesheets %}
+			<!--[if lt IE 9]>
+				{% javascripts 
+				   'js/html5shiv.min.js'
+				   'js/respond.min.js' %}
+				<script type="text/javascript" src="{{ asset_url }}"></script>
+				{% endjavascripts %}
+			<![endif]-->
+		{% endblock %}
+	</head>
+	
+	<body>
+	<div class="container">
+		<div class="navbar navbar-default navbar-static-top" role="navigation">
+			<div class="container">
+			{% block navigation %} {% endblock %}
+			</div>
+		</div>
+		<div id="sousHeader" class="container">{% block sousHeader %} {% endblock %}</div>
+		
+		<div class="container">
+			<div class="row">
+				{% block row %}
+				<div id="corps" class="col-lg-9">{% block corps %} {% endblock %}</div>
+				<div id="coteDroit" class="col-lg-3">{% block coteDroit %} {% endblock %}</div>
+				{% endblock %}
+			</div>
+		</div>
+		<div class="footer container"><p class="text-muted">&copy; {{ "now"|date('Y') }} SDIS CHABLAIS |
+			<a href="{{ path('jsp_admin_accueil') }}"><span class="glyphicon glyphicon-dashboard"></span></a>
+			{% if exception is not defined %}
+			{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+				| <a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-off"></span></a>
+			{% endif %}
+			{% endif %}
+			| <a href="{{ path('sdis_nouveautes') }}">Mises à jour</a>
+		</p></div>
+		{% block javascript %}
+			{% javascripts filter='yui_js'
+				   'js/jquery.js'
+				   'js/bootstrap.min.js' %}
+				<script type="text/javascript" src="{{ asset_url }}"></script>
+			{% endjavascripts %}
+		{% endblock %}
+	</div>
+	</body>
+</html>

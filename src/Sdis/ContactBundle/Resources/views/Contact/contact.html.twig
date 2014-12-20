@@ -1,0 +1,44 @@
+{% extends "::layoutSDIS.html.twig" %}
+
+{% form_theme form _self %}
+
+{% block radio_widget %}
+{% spaceless %}
+    <div class="radio-inline">
+        <label for="{{ id }}" class="required"><input type="radio" {{ block('widget_attributes') }} required="required" {% if value is defined %} value="{{ value }}"{% endif %} />{{ label|trans({}, translation_domain) }}</label>
+    </div>
+{% endspaceless %}
+{% endblock radio_widget %}
+
+{% block corps %}
+<h1>CONTACT</h1>
+	<form method="post" {{ form_enctype(form) }} role="form">
+       <div class="form-group">
+			{{ form_label(form.destinataire, "Destinataire") }}
+			{% if form_errors(form.destinataire) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.destinataire) }}</div>{% endif %}
+			<div class="input-group">
+			<span class="input-group-addon glyphicon glyphicon-user"></span>
+			{{ form_widget(form.destinataire, { 'attr': {'class': 'form-control'} }) }}
+			</div>
+		</div>
+        <div class="form-group">
+			{{ form_label(form.mail, "E-Mail") }}
+			{% if form_errors(form.mail) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.mail) }}</div>{% endif %}
+			<div class="input-group">
+			<span class="input-group-addon">@</span>
+			{{ form_widget(form.mail, { 'attr': {'class': 'form-control'} }) }}
+			</div>
+		</div>
+		<div class="form-group">
+			{{ form_label(form.message, "Message") }}
+			{% if form_errors(form.message) != '' %}<div class="alert alert-danger" role="alert">{{ form_errors(form.message) }}</div>{% endif %}
+			<div class="input-group">
+			<span class="input-group-addon glyphicon glyphicon-envelope"></span>
+			{{ form_widget(form.message, { 'attr': {'class': 'form-control', 'rows': '10'} }) }}
+			</div>
+		</div>
+			
+		{{ form_rest(form) }}
+		<input type="submit" class="btn btn-primary" />
+	</form>
+{% endblock %}

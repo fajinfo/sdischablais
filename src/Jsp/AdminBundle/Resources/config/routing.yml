@@ -1,0 +1,111 @@
+jsp_admin_accueil:
+    path:     /admin
+    defaults: { _controller: JspAdminBundle:Default:index }
+jsp_admin_evenements_liste:
+    path:     /admin/evenements
+    defaults: { _controller: JspAdminBundle:Evenements:liste }
+jsp_admin_evenements_supprimerok:
+    path:     /admin/evenements/supprimerok/{id}
+    defaults: { _controller: JspAdminBundle:Evenements:supprimerok }
+    requirements:
+        id: \d+
+jsp_admin_evenements_supprimer:
+    path:     /admin/evenements/supprimer/{id}
+    defaults: { _controller: JspAdminBundle:Evenements:supprimer }
+    requirements:
+        id: \d+
+jsp_admin_evenements_purger:
+    path:     /admin/evenements/purger
+    defaults: { _controller: JspAdminBundle:Evenements:purger }
+jsp_admin_evenements_purgerok:
+    path:     /admin/evenements/purgerok
+    defaults: { _controller: JspAdminBundle:Evenements:purgerOK }
+jsp_admin_evenements_nouveau:
+    path:     /admin/evenements/nouveau
+    defaults: { _controller: JspAdminBundle:Evenements:nouveau }
+jsp_admin_evenements_modifier:
+    path:     /admin/evenements/modifier/{id}
+    defaults: { _controller: JspAdminBundle:Evenements:modifier }
+    requirements:
+        id: \d+
+jsp_admin_galerie_nouvelleGalerie:
+    path:     /admin/galerie/nouvelleGalerie
+    defaults: { _controller: JspAdminBundle:Galerie:nouvelleGalerie }
+jsp_admin_galerie_nouvellePhoto:
+    path:     /admin/galerie/nouvellePhoto/{parent}
+    defaults: { _controller: JspAdminBundle:Galerie:nouvellePhoto, parent: root }
+jsp_admin_galerie_supprimerPhoto:
+    path:     /admin/galerie/supprimerPhoto/{id}
+    defaults: { _controller: JspAdminBundle:Galerie:supprimerPhoto }
+    requirements:
+        id: \d+
+jsp_admin_galerie_supprimerPhotoOk:
+    path:     /admin/galerie/supprimerPhotoOk/{id}
+    defaults: { _controller: JspAdminBundle:Galerie:supprimerPhotoOk }
+    requirements:
+        id: \d+
+jsp_admin_galerie_modifier:
+    path:     /admin/galerie/modifierGalerie/{id}
+    defaults: { _controller: JspAdminBundle:Galerie:modifierGalerie }
+    requirements:
+        id: \d+
+jsp_admin_galerie_supprimerGalerie:
+    path:     /admin/galerie/supprimerGalerie/{id}
+    defaults: { _controller: JspAdminBundle:Galerie:supprimerGalerie }
+    requirements:
+        id: \d+
+jsp_admin_galerie_supprimerGalerieOk:
+    path:     /admin/galerie/supprimerGalerieOk/{id}
+    defaults: { _controller: JspAdminBundle:Galerie:supprimerGalerieOk }
+    requirements:
+        id: \d+
+jsp_admin_galerie_liste:
+    path:     /admin/galerie/{parent}
+    defaults: { _controller: JspAdminBundle:Galerie:liste, parent: root }
+jsp_admin_liens_liste:
+    path:     /admin/liens
+    defaults: { _controller: JspAdminBundle:Liens:liste }
+jsp_admin_liens_supprimerok:
+    path:     /admin/liens/supprimerok/{id}
+    defaults: { _controller: JspAdminBundle:Liens:supprimerok }
+    requirements:
+        id: \d+
+jsp_admin_liens_supprimer:
+    path:     /admin/liens/supprimer/{id}
+    defaults: { _controller: JspAdminBundle:Liens:supprimer }
+    requirements:
+        id: \d+
+jsp_admin_liens_nouveau:
+    path:     /admin/liens/nouveau
+    defaults: { _controller: JspAdminBundle:Liens:nouveau }
+jsp_admin_liens_modifier:
+    path:     /admin/liens/modifier/{id}
+    defaults: { _controller: JspAdminBundle:Liens:modifier }
+    requirements:
+        id: \d+
+jsp_admin_user_liste:
+    path:     /admin/user
+    defaults: { _controller: JspAdminBundle:User:liste }
+jsp_admin_user_supprimerok:
+    path:     /admin/user/supprimerok/{id}
+    defaults: { _controller: JspAdminBundle:User:supprimerok }
+    requirements:
+        id: \d+
+jsp_admin_user_supprimer:
+    path:     /admin/user/supprimer/{id}
+    defaults: { _controller: JspAdminBundle:User:supprimer }
+    requirements:
+        id: \d+
+jsp_admin_user_nouveau:
+    path:     /admin/user/nouveau
+    defaults: { _controller: JspAdminBundle:User:nouveau }
+jsp_admin_user_modifier:
+    path:     /admin/user/modifier/{id}
+    defaults: { _controller: JspAdminBundle:User:modifier }
+    requirements:
+        id: \d+
+jsp_admin_user_changePassword:
+    path:     /admin/user/changePassword/{id}
+    defaults: { _controller: JspAdminBundle:User:changePassword }
+    requirements:
+        id: \d+
