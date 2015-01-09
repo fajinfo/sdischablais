@@ -1,0 +1,42 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+
+<h1>COMMUNICATIONS</h1>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Communication Rapide</h3>
+	</div>
+	<div class="panel-body">
+		<form method="post" {{ form_enctype(form) }} role="form">
+			{{ form_widget(form) }}
+			<div class="btn-group">
+				<input type="submit" class="btn btn-primary" value="Créer"/>
+				<a href="{{ path('sdis_admin_communications_nouveau') }}" class="btn btn-default">Edition Complète</a>
+			</div>
+		</form>
+	</div>
+</div>
+<hr/>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Utilisateur</th>
+            <th>Contenu</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for communication in communications %}
+        <tr>
+            <td>{{ communication.titre|upper }}</td>
+            <td>{{ communication.user.username }}</td>
+            <td>{{ communication.contenu|slice(0,40) }} ...</td>
+            <td><a href="{{ path('sdis_admin_communications_modifier', { 'id': communication.id }) }}" title="Editer"><span class="glyphicon glyphicon-pencil"></span></a>  <a href="{{ path('sdis_admin_communications_supprimer', { 'id': communication.id }) }}" title="Supprimer"><span class="glyphicon glyphicon-remove"></span></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

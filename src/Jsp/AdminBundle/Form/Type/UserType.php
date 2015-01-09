@@ -18,6 +18,8 @@ class UserType extends AbstractType
 			'choices' => array(
 				'ROLE_CHAUFFEUR' => 'Chauffeur',
 				'ROLE_PHOTOGRAPHE' => 'Photographe',
+                'ROLE_OFFICIER' => 'Officier',
+                'ROLE_QM' => 'QM',
 				'ROLE_ADMIN' => 'Administrateur',
 				'ROLE_SUPER_ADMIN' => 'SuperAdministrateur'
 			),

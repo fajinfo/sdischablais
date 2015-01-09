@@ -28,6 +28,9 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Jsp\UserBundle\JspUserBundle(),
             new Jsp\AdminBundle\JspAdminBundle(),
+            new Sdis\VehiculeBundle\SdisVehiculeBundle(),
+	    new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Sdis\AffichageBundle\SdisAffichageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

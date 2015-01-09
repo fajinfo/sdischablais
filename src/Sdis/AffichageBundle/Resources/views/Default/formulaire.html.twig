@@ -1,0 +1,39 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+
+<h1>COMMUNICATIONS</h1>
+		<form method="post" {{ form_enctype(form) }} role="form">
+			{{ form_widget(form) }}
+			<div class="btn-group">
+				<input type="submit" class="btn btn-primary" value="Créer"/>
+			</div>
+		</form>
+{% endblock %}
+
+{% set dates = ['sdis_affichagebundle_communications_dateDebut_date', 'sdis_affichagebundle_communications_dateFin_date'] %}
+{% set times = ['sdis_affichagebundle_communications_dateDebut_time', 'sdis_affichagebundle_communications_dateFin_time'] %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% include "::datepicker.js.twig" %}
+    <script type="text/javascript">var CKEDITOR_BASEPATH = '/ckeditor/';</script>
+    <script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script type="text/javascript">
+        CKEDITOR.replace('sdis_affichagebundle_communications[contenu]', {
+            skin: 'office2013',
+            toolbar: [
+                { name: 'pressePapier', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo', 'Scayt', 'Find', 'Replace' ] },
+                { name: 'Edition', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar', 'Maximize', 'Source' ] },
+                '/',
+                { name: 'miseEnForme', items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'SuperScript', '-', 'RemoveFormat' ] },
+                { name: 'listes', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'JustifyLeft', 'JustifyCenter', 'JustifyRight' ] },
+                { name: 'styles', items: [ 'Format', 'Font', 'FontSize' ] },
+            ],
+            extraPlugins: 'find,justify,font',
+            format_tags: 'p;h1;h3',
+            scayt_autoStartup: true,
+            scayt_sLang: 'fr_FR',
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        {% for vehicule in typesVehicules %}
+           .label-{{ vehicule.id }} {
+                background-color: {{ vehicule.color }};
+               color: {{ vehicule.textColor }};
+           }
+        {% endfor %}
+    </style>
+{% endblock %}
+
+{% block corps %}
+    <h1>RESERVATION DES VEHICULES</h1>    
+    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Véhicules Disponibles <a href="{{ path('sdis_admin_vehicule_resnouveau') }}" class="btn btn-default">Réserver un véhicule</a> </h3>
+    </div>
+    <div class="panel-body">
+        {% for vehicule in typesVehicules %}
+            <span class="label label-default label-{{ vehicule.id }}">{{ vehicule.nom }}</span>
+        {% endfor %}
+    </div>
+    </div>
+    
+    <div id="calendrier"></div>
+{% endblock %}
+
+
+{% block javascript %}
+    {{ parent() }}
+    {% if is_granted('ROLE_CHAUFFEUR') %}
+    <script type="text/javascript">
+       $(document).ready(function() {
+           $('#calendrier').fullCalendar({
+               lang: 'fr',
+               header: {  
+                    left: 'today',
+                    center: 'prev title next',
+                    right: 'month,agendaWeek,agendaDay'
+               },
+               contentHeight: 550,
+               businessHours: true,
+               timeFormat : 'HH:mm',
+               allDaySlot: false,
+               fixedWeekCount: false,
+               eventClick: function(calEvent, jsEvent, view) {
+                   window.location.assign(Routing.generate('sdis_admin_vehicule_resmodifier', { id:calEvent.id }));
+               },
+               dayClick: function(date, jsEvent, view) {
+                   window.location.assign(Routing.generate('sdis_admin_vehicule_resnouveau', { date:date.format()}));
+               },
+               eventSources: [
+                   {
+                        url: Routing.generate('sdis_vehicules_calendrier'),
+                        type: 'POST',
+                        error: function() {
+                            alert('Une erreur est survenue au moment de récuperer les évenements !');
+                        }
+                    }
+               ]
+           });
+       });
+    </script>
+    {% endif %}
+{% endblock %}

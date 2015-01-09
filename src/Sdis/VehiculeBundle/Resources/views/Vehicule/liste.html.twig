@@ -1,0 +1,24 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+    <h1>LISTE DES VEHICULES</h1>    
+    <div class="btn-group">
+        <a href="{{ path('sdis_admin_vehicule_vhcnouveau') }}" class="btn btn-primary">Nouveau Véhicule</a>
+    </div>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+    <tbody>
+    {% for vhc in typesVehicules %}
+    <tr>
+        <td>{{ vhc.nom }}</td>
+        <td><a href="{{ path('sdis_admin_vehicule_vhcmodifier', { 'id': vhc.id }) }}" title="Editer"><span class="glyphicon glyphicon-pencil"></span></a> <a href="{{ path('sdis_admin_vehicule_vhcsupprimer', { 'id': vhc.id }) }}" title="Supprimer"><span class="glyphicon glyphicon-remove"></span></a>    </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

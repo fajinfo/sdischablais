@@ -1,3 +1,11 @@
+sdis_affichage:
+    resource: "@SdisAffichageBundle/Resources/config/routing.yml"
+    prefix:   /
+
+sdis_vehicule:
+    resource: "@SdisVehiculeBundle/Resources/config/routing.yml"
+    prefix:   /
+
 sdis_admin:
     resource: "@SdisAdminBundle/Resources/config/routing.yml"
     prefix:   /
@@ -35,3 +43,5 @@ fos_user_change_password:
 jsp_admin:
     resource: "@JspAdminBundle/Resources/config/routing.yml"
     prefix: /
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

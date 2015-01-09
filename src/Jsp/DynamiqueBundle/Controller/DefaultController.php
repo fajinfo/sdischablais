@@ -24,7 +24,7 @@ class DefaultController extends Controller
 		'jour' => $prochainEvenement->getDate()->format('d'),
 		'heureDebut' => $prochainEvenement->getDate()->format('H\hi'),
 		'heureFin' => $prochainEvenement->getDateFin()->format('H\hi'),
-		'mois' => $moisFr[$prochainEvenement->getDate()->format('m')]
+		'mois' => $moisFr[$prochainEvenement->getDate()->format('n')]
 		));
     }
 	

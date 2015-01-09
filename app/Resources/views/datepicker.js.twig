@@ -1,0 +1,23 @@
+{% spaceless %}
+<script type="text/javascript">
+    {% for date in dates %}
+        $("#{{ date }}").focusout(function() {
+            var value = $("#{{ date }}").val();
+            $("#{{ date }}").val(value.replace(/^(\d{1,2})[. ](\d{1,2})[. ](\d{2,4})$/, '$1/$2/$3'));
+        });
+        
+        $("#{{ date }}").datepicker({
+            format: "dd/mm/yyyy",
+            todayBtn: "linked",
+            language: "fr-CH"
+        });
+    {% endfor %}
+    
+    {% for time in times %}
+        $("#{{ time }}").focusout(function() {
+            var value = $("#{{ time }}").val();
+            $("#{{ time }}").val(value.replace(/^(\d{1,2})[hH.]?(\d{1,2})$/, '$1:$2'));
+        });
+    {% endfor %}
+</script>
+{% endspaceless %}

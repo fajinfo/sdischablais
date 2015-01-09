@@ -1,0 +1,4 @@
+services:
+    sdis_affichage.comservice:
+        class: Sdis\AffichageBundle\ComService
+        arguments: [@doctrine.orm.entity_manager]

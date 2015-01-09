@@ -5,7 +5,9 @@
 {% block title %} SDIS Chablais {% endblock %}
 {% block stylesheets %}
 	{{ parent() }}
-	{% stylesheets filter='cssrewrite' 'css/sdis.css' %}
+	{% stylesheets filter='cssrewrite' 
+	'css/sdis.css'
+	'css/datepicker3.css' %}
 	<link rel="stylesheet" href="{{ asset_url }}" type="text/css"/>
 	{% endstylesheets %}
 {% endblock %}

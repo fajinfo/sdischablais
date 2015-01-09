@@ -1,0 +1,34 @@
+sdis_affichage_tv:
+    path:     /tv/{token}/{dia}
+    defaults: { _controller: SdisAffichageBundle:Default:index, dia: 0 }
+    options:
+        expose: true
+sdis_admin_communications_liste:
+    path:   /admin/communications
+    defaults: { _controller: SdisAffichageBundle:Admin:liste }
+sdis_admin_communications_supprimer:
+    path:     /admin/communications/supprimer/{id}
+    defaults: { _controller: SdisAffichageBundle:Admin:supprimer }
+    requirements:
+        id: \d+
+sdis_admin_communications_supprimerOk:
+    path:     /admin/communications/supprimer/ok/{id}
+    defaults: { _controller: SdisAffichageBundle:Admin:supprimerOk }
+    requirements:
+        id: \d+
+sdis_admin_communications_modifier:
+    path:     /admin/communications/modifier/{id}
+    defaults: { _controller: SdisAffichageBundle:Admin:modifier }
+    requirements:
+        id: \d+
+sdis_admin_communications_nouveau:
+    path:     /admin/communications/ajouter
+    defaults: { _controller: SdisAffichageBundle:Admin:nouveau }
+sdis_affichage_sendAlarme:
+    path:     /alarme/send/{message}
+    defaults: { _controller: SdisAffichageBundle:Alarme:send }
+sdis_affichage_alarmeEventSource:
+    path:     /alarme/eventSource
+    defaults: { _controller: SdisAffichageBundle:Alarme:eventSource }
+    options:
+        expose:  true

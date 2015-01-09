@@ -1,0 +1,25 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+    {% if mod %}
+        <h1>MODIFIER UNE RESERVATION <a href="{{ path('sdis_admin_vehicule') }}" class="btn btn-info">Retour au calendrier</a></h1>
+    {% else %}
+        <h1>RESERVER UN VEHICULE <a href="{{ path('sdis_admin_vehicule') }}" class="btn btn-info">Retour au calendrier</a></h1>
+    {% endif %}
+    <form method="post" {{ form_enctype(form) }} role="form">
+        {{ form_rest(form) }}
+        
+        {% if mod %}
+        <a href="{{ path('sdis_admin_vehicule_ressupprimer', {'id': idReservation}) }}" class="btn btn-danger">Supprimer la reservation</a>
+        {% endif %}
+        <input type="submit" class="btn btn-primary" />
+    </form>
+{% endblock %}
+
+{% set dates = ['sdis_vehiculebundle_calendrier_dateDebut_date', 'sdis_vehiculebundle_calendrier_dateFin_date'] %}
+{% set times = ['sdis_vehiculebundle_calendrier_dateDebut_time', 'sdis_vehiculebundle_calendrier_dateFin_time'] %}
+
+{% block javascript %}
+    {{ parent() }}
+     {% include "::datepicker.js.twig" %}
+{% endblock %}

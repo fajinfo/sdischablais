@@ -1,4 +1,4 @@
 services:
-#    sdis_dynamique.example:
-#        class: Sdis\DynamiqueBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    sdis_dynamique.nouveautes:
+        class: Sdis\DynamiqueBundle\Nouveautes
+        arguments: [@doctrine.orm.entity_manager]

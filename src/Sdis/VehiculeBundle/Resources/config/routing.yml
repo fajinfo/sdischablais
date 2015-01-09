@@ -1,0 +1,41 @@
+sdis_admin_vehicule:
+    path:     /admin/vehicules
+    defaults: { _controller: SdisVehiculeBundle:Default:index }
+sdis_vehicules_calendrier:
+    path:     /admin/vehicules/donneesJson
+    defaults: { _controller: SdisVehiculeBundle:Default:donneesJson }
+    options:
+        expose: true
+sdis_admin_vehicule_vhcliste:
+    path:   /admin/vehicules/listevhc
+    defaults: { _controller: SdisVehiculeBundle:Vehicule:liste }
+sdis_admin_vehicule_vhcsupprimer:
+    path:   /admin/vehicules/supprimervhc/{id}
+    defaults: { _controller: SdisVehiculeBundle:Vehicule:supprimer }
+    requirements:
+        id: \d+
+sdis_admin_vehicule_vhcnouveau:
+    path:   /admin/vehicules/nouveauvhc
+    defaults: { _controller: SdisVehiculeBundle:Vehicule:nouveau }
+sdis_admin_vehicule_vhcmodifier:
+    path:   /admin/vehicules/modifiervhc/{id}
+    defaults: { _controller: SdisVehiculeBundle:Vehicule:modifier }
+    requirements:
+        id: \d+
+sdis_admin_vehicule_ressupprimer:
+    path:   /admin/vehicules/supprimer/{id}
+    defaults: { _controller: SdisVehiculeBundle:Default:supprimer }
+    requirements:
+        id: \d+
+sdis_admin_vehicule_resnouveau:
+    path:   /admin/vehicules/nouvelle/{date}
+    defaults: { _controller: SdisVehiculeBundle:Default:nouveau, date: now }
+    options:
+        expose: true
+sdis_admin_vehicule_resmodifier:
+    path:   /admin/vehicules/modifier/{id}
+    defaults: { _controller: SdisVehiculeBundle:Default:modifier }
+    requirements:
+        id: \d+
+    options:
+        expose: true
