@@ -1,0 +1,18 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+
+<h1>PERSONNEL</h1>
+<div class="panel panel-danger">
+<div class="panel-heading">
+<h3 class="panel-title">Voulez vous vraiment supprimer la resérvation suivante ?</h3>
+</div>
+<div class="panel-body">
+<p>{{ utilisation.motif }} </p>
+<div class="btn-group">
+<a href="{{ path('sdis_admin_utilisationCaserne_liste') }}" class="btn btn-success">Retour</a>
+<a href="{{ path('sdis_admin_utilisationCaserne_supprimerOk', { 'id': utilisation.id }) }}" class="btn btn-danger">Supprimer</a>
+</div>
+</div>
+</div>
+{% endblock %}

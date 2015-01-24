@@ -1,0 +1,20 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+
+<h1>ROULAGE VSS</h1>
+		<form method="post" {{ form_enctype(form) }} role="form">
+			{{ form_widget(form) }}
+			<div class="btn-group">
+				<input type="submit" class="btn btn-primary" value="Créer"/>
+			</div>
+		</form>
+{% endblock %}
+
+{% set dates = ['sdis_affichagebundle_piquetsvss_debut_date', 'sdis_affichagebundle_piquetsvss_fin_date'] %}
+{% set times = ['sdis_affichagebundle_piquetsvss_debut_time', 'sdis_affichagebundle_piquetsvss_fin_time'] %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% include "::datepicker.js.twig" %}
+{% endblock %}

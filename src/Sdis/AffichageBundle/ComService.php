@@ -11,7 +11,16 @@ class ComService {
     }
     
     public function purger() {
-        $repository = $this->em->getRepository('SdisAffichageBundle:Communications');
-		$repository->purger();
+        $communications = $this->em->getRepository('SdisAffichageBundle:Communications');
+		$communications->purger();
+        
+        $utilisation = $this->em->getRepository('SdisAffichageBundle:utilisationCaserne');
+		$utilisation->purger();
+        
+        $piquetsvss = $this->em->getRepository('SdisAffichageBundle:PiquetsVss');
+		$piquetsvss->purger();
+        
+        $piquets = $this->em->getRepository('SdisAffichageBundle:Piquets');
+		$piquets->purger();
     }
 }

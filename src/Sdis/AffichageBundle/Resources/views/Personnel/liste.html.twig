@@ -1,0 +1,30 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+
+<h1>PERSONNEL</h1>
+<p><a href="{{ path('sdis_admin_personnel_nouveau') }}" class="btn btn-success">Créer un membre</a></p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Grade</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Nip</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for personnel in personnels %}
+        <tr>
+            <td>{{ personnel.grade }}</td>
+            <td>{{ personnel.nom }}</td>
+            <td>{{ personnel.prenom }}</td>
+            <td>{{ personnel.nip }}</td>
+            <td><a href="{{ path('sdis_admin_personnel_modifier', { 'id': personnel.id }) }}" title="Editer"><span class="glyphicon glyphicon-pencil"></span></a>  <a href="{{ path('sdis_admin_personnel_supprimer', { 'id': personnel.id }) }}" title="Supprimer"><span class="glyphicon glyphicon-remove"></span></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -33,7 +33,13 @@ class CalendrierType extends AbstractType
             'multiple' => false,
             'label' => 'Véhicule'
         ))
-        ->add('remarque', 'text');
+        ->add('remarque', 'text', array('required' => false))
+        ->add('mission', 'entity', array(
+            'class' => 'SdisVehiculeBundle:Missions',
+            'property' => 'Nom',
+            'multiple' => false,
+            'label' => 'Mission'
+        ));
     }
     /**
     * @param OptionsResolverInterface $resolver

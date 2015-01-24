@@ -26,6 +26,9 @@
         <li><a href="{# path('jsp_admin_galerie_liste') #}"><span class="glyphicon glyphicon-camera"></span> Galerie</a></li>
         {% endif %} {% if is_granted('ROLE_OFFICIER') %}
         <li><a href="{{ path('sdis_admin_communications_liste') }}"><span class="glyphicon glyphicon-bullhorn"></span> Communications</a></li>
+        <li><a href="{{ path('sdis_admin_utilisationCaserne_liste') }}"><span class="glyphicon glyphicon-home"></span> Utilisation Caserne</a></li>
+        <li><a href="{{ path('sdis_admin_PiquetsVss_liste') }}"><span class="glyphicon glyphicon-refresh"></span> Roulage VSS</a></li>
+        <li><a href="{{ path('sdis_admin_Piquets_liste') }}"><span class="glyphicon glyphicon-exclamation-sign"></span> Piquets</a></li>
         {% endif %} {% if is_granted('ROLE_ADMIN') %}
         <li><a href="{{ path('jsp_admin_evenements_liste') }}"><span class="glyphicon glyphicon-calendar"></span> Evenements</a>
         </li>
@@ -33,6 +36,7 @@
         </li>
         <li><a href="{{ path('sdis_admin_nouveautes') }}"><span class="glyphicon glyphicon-pencil"></span> Modifications</a>
         </li>
+        <li><a href="{{ path('sdis_admin_personnel_liste') }}"><span class="glyphicon glyphicon-user"></span> Personnel</a></li>
         {% endif %} {% if is_granted('ROLE_SUPER_ADMIN') %}
         <li><a href="{{ path('console') }}"><span class="glyphicon glyphicon-road"></span> Console Symfony</a>
         </li>

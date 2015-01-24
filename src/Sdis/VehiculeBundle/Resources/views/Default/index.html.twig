@@ -9,6 +9,14 @@
                color: {{ vehicule.textColor }};
            }
         {% endfor %}
+        .fc-day-grid thead {
+             background: #B6B6B6;   
+        }
+        .remarque {
+            color: #FFFFFF;
+            float: right;
+        }
+        .fc-agenda-slots td div { height: 10px; }
     </style>
 {% endblock %}
 
@@ -16,13 +24,22 @@
     <h1>RESERVATION DES VEHICULES</h1>    
     <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Véhicules Disponibles <a href="{{ path('sdis_admin_vehicule_resnouveau') }}" class="btn btn-default">Réserver un véhicule</a> </h3>
+        <h3 class="panel-title hidden-xs">Véhicules Disponibles <a href="{{ path('sdis_admin_vehicule_resnouveau') }}" class="btn btn-default">Réserver un véhicule</a> </h3>
     </div>
     <div class="panel-body">
-        {% for vehicule in typesVehicules %}
+        <p>{% for vehicule in typesVehicules %}
             <span class="label label-default label-{{ vehicule.id }}">{{ vehicule.nom }}</span>
-        {% endfor %}
+        {% endfor %}</p>
+        <p>
+            {% for mission in missions %}
+                <span class="label label-default"><img src="/img/missions/{{ mission.image }}"/> {{ mission.nom }}</span>
+            {% endfor %}
+        </p>
+        <p>Survoler une réservation vous permet d'afficher les éventuelles remarques !</p>
     </div>
+    <div class="panel-footer hidden-xs"><div class="input-group"><input type="text" id="dateDesiree" class="form-control" placeholder="Se rendre à la date ... Exemple du format : 01/01/2015"><span class="input-group-btn"><button class="btn btn-default" id="Go" type="button">Aller!</button>
+      </span>
+    </div></div>
     </div>
     
     <div id="calendrier"></div>
@@ -32,7 +49,7 @@
 {% block javascript %}
     {{ parent() }}
     {% if is_granted('ROLE_CHAUFFEUR') %}
-    <script type="text/javascript">
+    <script type="text/javascript">        
        $(document).ready(function() {
            $('#calendrier').fullCalendar({
                lang: 'fr',
@@ -50,7 +67,9 @@
                    window.location.assign(Routing.generate('sdis_admin_vehicule_resmodifier', { id:calEvent.id }));
                },
                dayClick: function(date, jsEvent, view) {
-                   window.location.assign(Routing.generate('sdis_admin_vehicule_resnouveau', { date:date.format()}));
+                   if( view.name != "month" ) {
+                       window.location.assign(Routing.generate('sdis_admin_vehicule_resnouveau', { date:date.format()}));
+                   }
                },
                eventSources: [
                    {
@@ -60,7 +79,32 @@
                             alert('Une erreur est survenue au moment de récuperer les évenements !');
                         }
                     }
-               ]
+               ],
+               viewRender: function( view, element ) {
+                  $(".fc-day-number").click( function(event) { 
+                    $("#calendrier").fullCalendar('changeView', 'agendaDay');
+                    $("#calendrier").fullCalendar('gotoDate', $( this ).attr("data-date"));
+                });
+                $(".fc-day").dblclick( function(event) { 
+                    window.location.assign(Routing.generate('sdis_admin_vehicule_resnouveau', { date:$( this ).attr("data-date")}));
+                });
+               },
+               eventRender: function( event, element ) {
+                   var titre = element.find(".fc-title");
+                   titre.prepend("<img src=\"/img/missions/" + event.mission + "\" /> ");
+                   if(event.remarque) {
+                       element.attr( "data-toggle", "tooltip" );
+                       element.attr( "data-placement", "top" );
+                       element.attr( "title", event.remarque);
+                       element.tooltip();
+                   }
+               },
+           });
+           
+           $("#Go").click( function() {
+               var dateFormatee = $("#dateDesiree").val().replace(/^(\d{1,2})[. /]?(\d{1,2})[. /]?(\d{2,4})$/, '$3-$2-$1');
+               $("#calendrier").fullCalendar('changeView', 'agendaDay');
+               $("#calendrier").fullCalendar('gotoDate', dateFormatee);
            });
        });
     </script>

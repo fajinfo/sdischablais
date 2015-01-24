@@ -32,3 +32,88 @@ sdis_affichage_alarmeEventSource:
     defaults: { _controller: SdisAffichageBundle:Alarme:eventSource }
     options:
         expose:  true
+sdis_admin_personnel_liste:
+    path:   /admin/personnel
+    defaults: { _controller: SdisAffichageBundle:Personnel:liste }
+sdis_admin_personnel_supprimer:
+    path:     /admin/personnel/supprimer/{id}
+    defaults: { _controller: SdisAffichageBundle:Personnel:supprimer }
+    requirements:
+        id: \d+
+sdis_admin_personnel_supprimerOk:
+    path:     /admin/personnel/supprimer/ok/{id}
+    defaults: { _controller: SdisAffichageBundle:Personnel:supprimerOk }
+    requirements:
+        id: \d+
+sdis_admin_personnel_modifier:
+    path:     /admin/personnel/modifier/{id}
+    defaults: { _controller: SdisAffichageBundle:Personnel:modifier }
+    requirements:
+        id: \d+
+sdis_admin_personnel_nouveau:
+    path:     /admin/personnel/ajouter
+    defaults: { _controller: SdisAffichageBundle:Personnel:nouveau }
+sdis_admin_utilisationCaserne_liste:
+    path:   /admin/utilisationCaserne
+    defaults: { _controller: SdisAffichageBundle:utilisationCaserne:liste }
+sdis_admin_utilisationCaserne_supprimer:
+    path:     /admin/utilisationCaserne/supprimer/{id}
+    defaults: { _controller: SdisAffichageBundle:utilisationCaserne:supprimer }
+    requirements:
+        id: \d+
+sdis_admin_utilisationCaserne_supprimerOk:
+    path:     /admin/utilisationCaserne/supprimer/ok/{id}
+    defaults: { _controller: SdisAffichageBundle:utilisationCaserne:supprimerOk }
+    requirements:
+        id: \d+
+sdis_admin_utilisationCaserne_modifier:
+    path:     /admin/utilisationCaserne/modifier/{id}
+    defaults: { _controller: SdisAffichageBundle:utilisationCaserne:modifier }
+    requirements:
+        id: \d+
+sdis_admin_utilisationCaserne_nouveau:
+    path:     /admin/utilisationCaserne/ajouter
+    defaults: { _controller: SdisAffichageBundle:utilisationCaserne:nouveau }
+
+sdis_admin_PiquetsVss_liste:
+    path:   /admin/PiquetsVss
+    defaults: { _controller: SdisAffichageBundle:PiquetsVss:liste }
+sdis_admin_PiquetsVss_supprimer:
+    path:     /admin/PiquetsVss/supprimer/{id}
+    defaults: { _controller: SdisAffichageBundle:PiquetsVss:supprimer }
+    requirements:
+        id: \d+
+sdis_admin_PiquetsVss_supprimerOk:
+    path:     /admin/PiquetsVss/supprimer/ok/{id}
+    defaults: { _controller: SdisAffichageBundle:PiquetsVss:supprimerOk }
+    requirements:
+        id: \d+
+sdis_admin_PiquetsVss_modifier:
+    path:     /admin/PiquetsVss/modifier/{id}
+    defaults: { _controller: SdisAffichageBundle:PiquetsVss:modifier }
+    requirements:
+        id: \d+
+sdis_admin_PiquetsVss_nouveau:
+    path:     /admin/PiquetsVss/ajouter
+    defaults: { _controller: SdisAffichageBundle:PiquetsVss:nouveau }
+sdis_admin_Piquets_liste:
+    path:   /admin/Piquets
+    defaults: { _controller: SdisAffichageBundle:Piquets:liste }
+sdis_admin_Piquets_supprimer:
+    path:     /admin/Piquets/supprimer/{id}
+    defaults: { _controller: SdisAffichageBundle:Piquets:supprimer }
+    requirements:
+        id: \d+
+sdis_admin_Piquets_supprimerOk:
+    path:     /admin/Piquets/supprimer/ok/{id}
+    defaults: { _controller: SdisAffichageBundle:Piquets:supprimerOk }
+    requirements:
+        id: \d+
+sdis_admin_Piquets_modifier:
+    path:     /admin/Piquets/modifier/{id}
+    defaults: { _controller: SdisAffichageBundle:Piquets:modifier }
+    requirements:
+        id: \d+
+sdis_admin_Piquets_nouveau:
+    path:     /admin/Piquets/ajouter
+    defaults: { _controller: SdisAffichageBundle:Piquets:nouveau }

@@ -32,6 +32,74 @@
     </table>
 </section>
 
+{% if utilisations is not empty %}
+<section>
+    <h2>UTILISATION DE LA CASERNE</h2>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Horaire</th>
+            <th>Motif</th>
+            <th>Requérant</th>
+        </tr>
+       {% for utilisation in utilisations %}
+        <tr>
+            <td>{{ utilisation.debut|date('d/m/Y') }}</td>
+            <td>{{ utilisation.debut|date('H\\hi') }} -> {{ utilisation.fin|date('H\\hi') }}</td>
+            <td><em>{{ utilisation.motif }}</em></td>
+            <td>{{ utilisation.requerant }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endif %}
+
+<section>
+    <h2>ROULAGE VSS</h2>
+    <table>
+        <tr>
+            <th>Sect</th>
+            <th>Semaine</th>
+            <th>Chauffeur 1</th>
+            <th>Chauffeur 2</th>
+        </tr>
+       {% for piquetVss in piquetsVss %}
+        <tr>
+            <td class="{{ piquetVss.section }}">{{ piquetVss.section }}</td>
+            <td>{{ piquetVss.debut|date('d/m/y') }} -> {{ piquetVss.fin|date('d/m/y') }}</td>
+            <td>{{ piquetVss.chauffeur1 }}</td>
+            <td>{{ piquetVss.chauffeur2 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
+<section>
+    <h2>PIQUETS</h2>
+    <table class="piquets">
+        <tr>
+            <th>Date</th>
+            <th>Serv.</th>
+            <th>Renf.</th>
+            <th>Chef d'intervention</th>
+            <th>Chef de groupe</th>
+            <th>Chauffeur</th>
+            <th>Intervenant</th>
+        </tr>
+       {% for piquet in piquets %}
+        <tr>
+            <td>{{ piquet.debut|date('d/m') }} -> {{ piquet.fin|date('d/m') }}</td>
+            <td class="{{ piquet.sectionService }}">{{ piquet.sectionService }}</td>
+            <td class="{{ piquet.sectionRenfort }}">{{ piquet.sectionRenfort }}</td>
+            <td>{{ piquet.chefIntervention }}</td>
+            <td>{{ piquet.chefGroupe }}</td>
+            <td>{{ piquet.chauffeur }}</td>
+            <td>{{ piquet.intervenant }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+
 {% for communication in communications %}
     <section>
         <h2>{{ communication.titre|upper }}</h2>
@@ -46,6 +114,16 @@
 
 <!-- Your Style -->
 <!-- Define the style of your presentation -->
+<style type="text/css">
+    {% for section in sections %}
+    .{{ section.numero }} {
+        background-color: {{ section.couleur }};
+    }
+    {% endfor %}
+    .piquets {
+        font-size: 0.8em;
+    }
+</style>
 
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 

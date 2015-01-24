@@ -1,0 +1,18 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+
+<h1>PIQUETS</h1>
+<div class="panel panel-danger">
+<div class="panel-heading">
+<h3 class="panel-title">Voulez vous vraiment supprimer le piquet suivant ?</h3>
+</div>
+<div class="panel-body">
+<p>Du {{ piquet.debut|date('d/m/Y') }} au {{ piquet.fin|date('d/m/Y') }}</p>
+<div class="btn-group">
+<a href="{{ path('sdis_admin_Piquets_liste') }}" class="btn btn-success">Retour</a>
+<a href="{{ path('sdis_admin_Piquets_supprimerOk', { 'id': piquet.id }) }}" class="btn btn-danger">Supprimer</a>
+</div>
+</div>
+</div>
+{% endblock %}

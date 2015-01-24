@@ -16,10 +16,14 @@ class DefaultController extends Controller
     */
     public function indexAction()
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('SdisVehiculeBundle:TypeVehicules');
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('SdisVehiculeBundle:TypeVehicules');
         $typesVehicules = $repository->findAll();
         
-        return $this->render('SdisVehiculeBundle:Default:index.html.twig', array('typesVehicules' => $typesVehicules));
+        $repository2 = $em->getRepository('SdisVehiculeBundle:Missions');
+        $missions = $repository2->findAll();
+        
+        return $this->render('SdisVehiculeBundle:Default:index.html.twig', array('typesVehicules' => $typesVehicules, 'missions' => $missions));
     }
     /**
     * @Secure(roles="ROLE_CHAUFFEUR")
@@ -44,7 +48,9 @@ class DefaultController extends Controller
                 'url' => '',
                 'editable' => false,
                 'color' => $evenement->getVhc()->getColor(),
-                'textColor' => $evenement->getVhc()->getTextColor()
+                'textColor' => $evenement->getVhc()->getTextColor(),
+                'mission' => $evenement->getMission()->getImage(),
+                'remarque' => $evenement->getRemarque()
             );
         }
         $response = new Response(json_encode($arrayReponse));

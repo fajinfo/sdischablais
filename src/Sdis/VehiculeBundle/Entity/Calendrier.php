@@ -70,6 +70,14 @@ class Calendrier
     * @ORM\Column(name="remarque", type="string", length=255, nullable=true)
     */
     private $remarque;
+    
+    /**
+     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="Sdis\VehiculeBundle\Entity\Missions")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $mission;
+
 
 
     /**
@@ -220,5 +228,25 @@ class Calendrier
     public function getRemarque()
     {
         return $this->remarque;
+    }
+    
+    /**
+     * Set mission
+     *
+     * @param Sdis\VehiculeBundle\Entity\Missions $mission
+     */
+    public function setMission(\Sdis\VehiculeBundle\Entity\Missions $mission)
+    {
+        $this->mission = $mission;
+    }
+
+    /**
+     * Get mission
+     *
+     * @return Sdis\VehiculeBundle\Entity\Missions
+     */
+    public function getMission()
+    {
+        return $this->mission;
     }
 }

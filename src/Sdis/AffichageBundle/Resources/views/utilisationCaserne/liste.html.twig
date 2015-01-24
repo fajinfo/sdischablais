@@ -1,0 +1,30 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+
+<h1>UTILISATION DE LA CASERNE</h1>
+<p><a href="{{ path('sdis_admin_utilisationCaserne_nouveau') }}" class="btn btn-success">Réserver</a></p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Horaire</th>
+            <th>Motif</th>
+            <th>Requérant</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for utilisation in utilisations %}
+        <tr>
+            <td>{{ utilisation.debut|date('d/m/Y') }}</td>
+            <td>{{ utilisation.debut|date('H\\hi') }} -> {{ utilisation.fin|date('H\\hi') }}</td>
+            <td>{{ utilisation.motif }}</td>
+            <td>{{ utilisation.requerant }}</td>
+            <td><a href="{{ path('sdis_admin_utilisationCaserne_modifier', { 'id': utilisation.id }) }}" title="Editer"><span class="glyphicon glyphicon-pencil"></span></a>  <a href="{{ path('sdis_admin_utilisationCaserne_supprimer', { 'id': utilisation.id }) }}" title="Supprimer"><span class="glyphicon glyphicon-remove"></span></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

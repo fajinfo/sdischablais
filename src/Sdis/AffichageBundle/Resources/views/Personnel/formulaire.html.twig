@@ -1,0 +1,12 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+
+<h1>PERSONNEL</h1>
+		<form method="post" {{ form_enctype(form) }} role="form">
+			{{ form_widget(form) }}
+			<div class="btn-group">
+				<input type="submit" class="btn btn-primary" value="Créer"/>
+			</div>
+		</form>
+{% endblock %}

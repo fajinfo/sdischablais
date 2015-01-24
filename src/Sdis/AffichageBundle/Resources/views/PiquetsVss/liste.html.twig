@@ -1,0 +1,32 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+
+<h1>ROULAGE VSS</h1>
+{% if is_granted('ROLE_ADMIN') %}
+<p><a href="{{ path('sdis_admin_PiquetsVss_nouveau') }}" class="btn btn-success">Nouveau</a></p>
+{% endif %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Du</th>
+            <th>Au</th>
+            <th>Chauffeur 1</th>
+            <th>Chauffeur 2</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for piquet in piquets %}
+        <tr>
+            <td>{{ piquet.debut|date('d/m/Y') }}</td>
+            <td>{{ piquet.fin|date('d/m/Y') }}</td>
+            <td>{{ piquet.chauffeur1 }}</td>
+            <td>{{ piquet.chauffeur2 }}</td>
+            <td><a href="{{ path('sdis_admin_PiquetsVss_modifier', { 'id': piquet.id }) }}" title="Editer"><span class="glyphicon glyphicon-pencil"></span></a> {% if is_granted('ROLE_ADMIN') %} <a href="{{ path('sdis_admin_PiquetsVss_supprimer', { 'id': piquet.id }) }}" title="Supprimer"><span class="glyphicon glyphicon-remove"></span></a>{% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
