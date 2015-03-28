@@ -11,7 +11,7 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()
                             ->getManager()
                             ->getRepository('SdisDynamiqueBundle:Nouveautes');
-        $nouveautes = $repository->findBy(array(), array('date'=> 'desc'), 10, 0); 
+        $nouveautes = $repository->findBy(array(), array('date'=> 'desc'), 5, 0); 
         return $this->render('SdisDynamiqueBundle:Default:nouveautes.html.twig', array('nouveautes' => $nouveautes));
     }
 }

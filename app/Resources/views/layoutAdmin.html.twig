@@ -23,7 +23,7 @@
         <li><a href="{{ path('sdis_admin_vehicule') }}"><span class="glyphicon glyphicon-record"></span> Véhicules</a>
         </li>
         {% endif %} {% if is_granted('ROLE_PHOTOGRAPHE') %}
-        <li><a href="{# path('jsp_admin_galerie_liste') #}"><span class="glyphicon glyphicon-camera"></span> Galerie</a></li>
+        <li><a href="{{ path('sdis_admin_galerie_liste') }}"><span class="glyphicon glyphicon-camera"></span> Galerie</a></li>
         {% endif %} {% if is_granted('ROLE_OFFICIER') %}
         <li><a href="{{ path('sdis_admin_communications_liste') }}"><span class="glyphicon glyphicon-bullhorn"></span> Communications</a></li>
         <li><a href="{{ path('sdis_admin_utilisationCaserne_liste') }}"><span class="glyphicon glyphicon-home"></span> Utilisation Caserne</a></li>
@@ -58,7 +58,8 @@
         'js/moment.min.js'
         'js/jquery-ui.custom.min.js'
         'js/fullcalendar.min.js' 
-        'js/calendar-fr.js'%}
+        'js/calendar-fr.js'
+        'js/jquery.slugify.js'%}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>

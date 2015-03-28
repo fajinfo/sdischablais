@@ -36,7 +36,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ SdisAccueilBundle ]
+    bundles:        [ SdisAccueilBundle, SdisGalerieBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -80,3 +80,17 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Jsp\UserBundle\Entity\User
+
+avalanche_imagine:
+    filters:
+        mignature:
+            type: relative_resize
+            options: { heighten: 160, cache_type: public, cache_expires: 1 month }
+        normal:
+            type: relative_resize
+            options: { heighten: 700, cache_type: public, cache_expires: 1 month }
+oneup_uploader:
+    mappings:
+        galerie:
+            frontend: dropzone
+            allowed_mimetypes: ["image/gif", "image/jpeg", "image/png"]

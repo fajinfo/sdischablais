@@ -1,0 +1,10 @@
+{% extends '::layoutSDIS.html.twig' %}
+
+{% block corps %}
+<form action="{{ path('sdis_piquets') }}" method="post" class="form-signin" role="form">
+    <h2 class="form-signin-heading">Piquets</h2>
+    <input type="password" class="form-control" placeholder="Votre Nip" id="nip" name="nip" required="required" autofocus="autofocus"/>
+
+    <input type="submit" id="_submit" name="_submit" class="btn btn-lg btn-primary btn-block" value="Connexion" />
+</form>
+{% endblock %}

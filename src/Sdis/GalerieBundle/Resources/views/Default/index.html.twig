@@ -1,0 +1,28 @@
+{% extends "SdisGalerieBundle::layout.html.twig" %}
+{% block corps %}
+<h1>PHOTOS</h1>
+<p class="spacer">
+<ol class="breadcrumb">
+{% for slug, param in filAriane %}<li><a href="{{ path('sdis_galerie', { 'slug': slug }) }}">{% if param == "root" %}Photos{% else %}{{ param }}{% endif %}</a></li>{% endfor %}
+</ol>
+</p>
+<div class="row spacer">
+{% for galerie in galeries %}
+<div class="col-xs-6 col-md-3">
+<a href="{{ path('sdis_galerie', { 'slug': galerie.slug }) }}" class="thumbnail">
+<h3>{{ galerie.titre }}</h3>
+<span>{{ galerie.description }}</span>
+</a>
+</div>
+{% endfor %}
+<div id="multiimages">
+{% for photo in photos %}
+<div class="col-xs-6 col-md-3">
+<a href="{{ asset(photo.getWebPath | apply_filter('normal')) }}" data-toggle="lightbox" data-gallery="multiimages" data-parent="#multiimages" class="thumbnail">
+<img src="{{ asset(photo.getWebPath | apply_filter('mignature')) }}" alt="" class="img-responsive"/>
+</a>
+</div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}

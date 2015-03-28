@@ -1,0 +1,37 @@
+sdis_galerie:
+    path:     /photos/{slug}
+    defaults: { _controller: SdisGalerieBundle:Default:index, slug: root }
+sdis_admin_galerie_nouvelleGalerie:
+    path: /admin/galerie/nouvelleGalerie
+    defaults: { _controller: SdisGalerieBundle:Admin:nouvelleGalerie }
+sdis_admin_galerie_nouvellePhoto:
+    path: /admin/galerie/nouvellePhoto/{slug}
+    defaults: { _controller: SdisGalerieBundle:Admin:nouvellePhoto, slug: root }
+sdis_admin_galerie_supprimerPhoto:
+    path: /admin/galerie/supprimerPhoto/{id}
+    defaults: { _controller: SdisGalerieBundle:Admin:supprimerPhoto }
+    requirements:
+        id: \d+
+sdis_admin_galerie_supprimerPhotoOk:
+    path: /admin/galerie/supprimerPhotoOk/{id}
+    defaults: { _controller: SdisGalerieBundle:Admin:supprimerPhotoOk }
+    requirements:
+        id: \d+
+sdis_admin_galerie_modifier:
+    path: /admin/galerie/modifierGalerie/{id}
+    defaults: { _controller: SdisGalerieBundle:Admin:modifierGalerie }
+    requirements:
+        id: \d+
+sdis_admin_galerie_supprimerGalerie:
+    path: /admin/galerie/supprimerGalerie/{id}
+    defaults: { _controller: SdisGalerieBundle:Admin:supprimerGalerie }
+    requirements:
+        id: \d+
+sdis_admin_galerie_supprimerGalerieOk:
+    path: /admin/galerie/supprimerGalerieOk/{id}
+    defaults: { _controller: SdisGalerieBundle:Admin:supprimerGalerieOk }
+    requirements:
+        id: \d+
+sdis_admin_galerie_liste:
+    path: /admin/galerie/{slug}
+    defaults: { _controller: SdisGalerieBundle:Admin:liste, slug: root }

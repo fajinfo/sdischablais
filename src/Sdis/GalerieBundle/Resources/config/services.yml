@@ -1,0 +1,6 @@
+services:
+    sdisgalerie.upload_listener2:
+        class: Sdis\GalerieBundle\EventListener\UploadListener
+        arguments: ["@doctrine", "@validator"]
+        tags:
+            - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }

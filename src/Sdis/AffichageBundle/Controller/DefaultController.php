@@ -21,7 +21,7 @@ class DefaultController extends Controller
                         ->orderBy('e.date', 'ASC')
                         ->setParameter('date', new \DateTime())
                         ->setFirstResult(0)
-                        ->setMaxResults(4)
+                        ->setMaxResults(6)
                         ->getQuery()
                         ->getResult();
         $listeCommunications = $em->getRepository('SdisAffichageBundle:Communications')->getCommunicationsActuelles();
@@ -29,6 +29,7 @@ class DefaultController extends Controller
         $piquetsVss = $em->getRepository('SdisAffichageBundle:PiquetsVss')->getNext();
         $piquets = $em->getRepository('SdisAffichageBundle:Piquets')->getNext();
         $sections = $em->getRepository('SdisAffichageBundle:Sections')->findAll();
+        $typesVehicules = $em->getRepository('SdisVehiculeBundle:TypeVehicules')->findAll();
         
             
         return $this->render('SdisAffichageBundle:Default:index.html.twig', array(
@@ -39,6 +40,7 @@ class DefaultController extends Controller
             'utilisations' => $utilisations,
             'piquetsVss' => $piquetsVss,
             'piquets' => $piquets,
-            'sections' => $sections));
+            'sections' => $sections,
+            'typesVehicules' => $typesVehicules));
     }
 }

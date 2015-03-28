@@ -7,6 +7,7 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 use Sdis\AffichageBundle\Entity\PiquetsVss;
 use Sdis\AffichageBundle\Form\Type\PiquetsVssType;
 use Sdis\AffichageBundle\Form\Type\PiquetsVssOfficiersType;
+use Doctrine\ORM\EntityRepository;
 
 class PiquetsVssController extends Controller
 {
@@ -83,5 +84,46 @@ class PiquetsVssController extends Controller
 			}
         
         return $this->render('SdisAffichageBundle:PiquetsVss:formulaire.html.twig', array('form' => $form->createView()));
+    }
+    public function remplacerAction(PiquetsVss $piquet) {
+        $session = $this->get('session');
+        
+        if(!$session->has('nip')) {
+             return $this->redirect($this->generateUrl('sdis_piquets'));
+        }
+        
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('SdisAffichageBundle:Personnel');
+        
+        $personnel = $repository->findOneByNip($session->get('nip'));
+        
+        if($piquet->getChauffeur1() == $personnel) {
+            $formBuilder = $this->createFormBuilder($piquet)->add('chauffeur1', 'entity', array('class' => 'SdisAffichageBundle:Personnel', 'query_builder' => function(EntityRepository $er) {
+                   return $er->createQueryBuilder('p')
+                    ->where('p.chauffeur = 1')
+                    ->orderBy('p.nom', 'ASC');
+                },));
+        } elseif($piquet->getChauffeur2() == $personnel) {
+            $formBuilder = $this->createFormBuilder($piquet)->add('chauffeur2', 'entity', array('class' => 'SdisAffichageBundle:Personnel', 'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                    ->where('p.chauffeur = 1')
+                    ->orderBy('p.nom', 'ASC');
+                },));
+        } else {
+            throw $this->createAccessDeniedException('Vos droits d\'accès ne vous permettent pas de modifier cette resource');
+        }
+        
+        $form = $formBuilder->getForm();
+        
+        $request = $this->get('request');
+        if($request->getMethod() == 'POST') {
+            $form->bind($request);
+            if($form->isValid()) {
+                $em->persist($piquet);
+                $em->flush();
+                return $this->redirect($this->generateUrl('sdis_piquets'));
+            }
+        }        
+        return $this->render('SdisAffichageBundle:PiquetsVss:formulaireRemplacement.html.twig', array('form' => $form->createView()));
     }
 }

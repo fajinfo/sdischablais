@@ -20,4 +20,14 @@ class CalendrierRepository extends EntityRepository
         
         return $qb->getQuery()->getResult();
     }
+    public function findForAffichage(\DateTime $date) {
+        $dateFin = clone $date;
+        $date->setTime(00,00);
+        $dateFin->setTime(23,59);
+        $qb = $this->createQueryBuilder('c')->where('c.dateDebut BETWEEN :dateDebut and :dateFin')
+            ->setParameter('dateDebut', $date)
+            ->setParameter('dateFin', $dateFin);
+        
+        return $qb->getQuery()->getResult();
+    }
 }

@@ -63,6 +63,8 @@ class utilisationCaserneController extends Controller
 	public function nouveauAction() {
 		$em = $this->getDoctrine()->getManager();
 		$utilisation = new utilisationCaserne;
+        $utilisation->setDebut(new \DateTime());
+        $utilisation->setFin(new \DateTime());
         
         $form = $this->createForm(new utilisationCaserneType, $utilisation);
 		

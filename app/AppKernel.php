@@ -29,8 +29,11 @@ class AppKernel extends Kernel
             new Jsp\UserBundle\JspUserBundle(),
             new Jsp\AdminBundle\JspAdminBundle(),
             new Sdis\VehiculeBundle\SdisVehiculeBundle(),
-	    new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+	        new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Sdis\AffichageBundle\SdisAffichageBundle(),
+            new Sdis\GalerieBundle\SdisGalerieBundle(),
+            new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+            new Oneup\UploaderBundle\OneupUploaderBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

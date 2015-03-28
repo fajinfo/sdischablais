@@ -1,6 +1,0 @@
-services:
-    jspadmin.upload_listener:
-        class: Jsp\AdminBundle\EventListener\UploadListener
-        arguments: ["@doctrine", "@validator"]
-        tags:
-            - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }

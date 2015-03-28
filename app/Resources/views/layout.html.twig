@@ -24,6 +24,7 @@
 	</head>
 	
 	<body>
+	<div class="alert alert-danger" role="alert">Vous vous trouvez sur le serveur de développement, merci de ne pas changer de piquets ou autre ici vos changements ne seraient pas sauvegardés, merci d'utiliser pompiers-aigle.ch !</div>
 	<div class="container">
 		<div class="navbar navbar-default navbar-static-top" role="navigation">
 			<div class="container">
@@ -48,6 +49,7 @@
 			{% endif %}
 			{% endif %}
 			| <a href="{{ path('sdis_nouveautes') }}">Mises à jour</a>
+			| <a href="{{ path('sdis_piquets') }}">Mes Piquets</a>
 		</p></div>
 		{% block javascript %}
 			{% javascripts filter='yui_js'

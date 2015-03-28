@@ -1,3 +1,7 @@
+sdis_galerie:
+    resource: "@SdisGalerieBundle/Resources/config/routing.yml"
+    prefix:   /
+
 sdis_affichage:
     resource: "@SdisAffichageBundle/Resources/config/routing.yml"
     prefix:   /
@@ -45,3 +49,9 @@ jsp_admin:
     prefix: /
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+_imagine:
+    resource: .
+    type:     imagine
+oneup_uploader:
+    resource: .
+    type: uploader

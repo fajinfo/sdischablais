@@ -117,3 +117,19 @@ sdis_admin_Piquets_modifier:
 sdis_admin_Piquets_nouveau:
     path:     /admin/Piquets/ajouter
     defaults: { _controller: SdisAffichageBundle:Piquets:nouveau }
+sdis_piquets:
+    path:     /piquets
+    defaults: { _controller: SdisAffichageBundle:Piquets:personnel }
+sdis_piquets_logout:
+    path:     /piquets/logout
+    defaults: { _controller: SdisAffichageBundle:Piquets:logout }
+sdis_piquets_remplacer:
+    path:     /piquets/remplacer/{id}
+    defaults: { _controller: SdisAffichageBundle:Piquets:remplacer }
+    requirements:
+        id: \d+
+sdis_piquets_remplacerVss:
+    path:     /piquets/remplacerVss/{id}
+    defaults: { _controller: SdisAffichageBundle:PiquetsVss:remplacer }
+    requirements:
+        id: \d+

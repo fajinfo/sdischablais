@@ -1,0 +1,35 @@
+{% extends "::layoutAdmin.html.twig" %}
+
+{% block stylesheets %} 
+    {{ parent() }} 
+    {% stylesheets filter='cssrewrite, yui_css' 'css/dropzone.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block corps %}
+    <h1>GALERIE</h1>
+    <form method="post" {{ form_enctype(form) }} role="form">
+        {{ form_rest(form) }}
+        <input type="submit" class="btn btn-primary" />
+    </form>
+{% endblock %}
+
+
+{% block javascript %}
+{{ parent() }}
+<script type="text/javascript">
+    function calculSlug() {
+        var slug = $( "#sdis_galeriebundle_galeries_parente option:selected" ).text() + "-" + $( "#sdis_galeriebundle_galeries_titre" ).val();
+        $( "#Slugify" ).val(slug);
+        $( "#Slugify" ).trigger( "change" );
+    };
+    $( "#sdis_galeriebundle_galeries_slug" ).before( '<input type="text" id="Slugify" value=""/>');
+    $( "#Slugify" ).css('display', 'none');
+    $( "#sdis_galeriebundle_galeries_slug" ).slugify("#Slugify");
+    $( "#sdis_galeriebundle_galeries_parente" ).change(calculSlug);
+    $( "#sdis_galeriebundle_galeries_titre" ).change(calculSlug);
+    calculSlug();
+    
+</script>
+{% endblock %}

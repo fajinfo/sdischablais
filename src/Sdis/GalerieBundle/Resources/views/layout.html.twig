@@ -1,0 +1,23 @@
+{% extends "::layoutSDIS.html.twig" %}
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets filter='cssrewrite, yui_css' 'css/lightbox.min.css' %}
+<link rel="stylesheet" type="text/css" href="{{ asset_url }}">
+{% endstylesheets %}
+{% endblock %}
+{% block javascript %}
+{{ parent() }}
+{% javascripts filter='yui_js' 'js/lightbox.min.js' %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script type="text/javascript">
+$(document).ready(function ($) {
+$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+event.preventDefault();
+$(this).ekkoLightbox({
+always_show_close: true
+});
+});
+});
+</script>
+{% endblock %}

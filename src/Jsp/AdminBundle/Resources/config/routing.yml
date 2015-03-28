@@ -28,40 +28,6 @@ jsp_admin_evenements_modifier:
     defaults: { _controller: JspAdminBundle:Evenements:modifier }
     requirements:
         id: \d+
-jsp_admin_galerie_nouvelleGalerie:
-    path:     /admin/galerie/nouvelleGalerie
-    defaults: { _controller: JspAdminBundle:Galerie:nouvelleGalerie }
-jsp_admin_galerie_nouvellePhoto:
-    path:     /admin/galerie/nouvellePhoto/{parent}
-    defaults: { _controller: JspAdminBundle:Galerie:nouvellePhoto, parent: root }
-jsp_admin_galerie_supprimerPhoto:
-    path:     /admin/galerie/supprimerPhoto/{id}
-    defaults: { _controller: JspAdminBundle:Galerie:supprimerPhoto }
-    requirements:
-        id: \d+
-jsp_admin_galerie_supprimerPhotoOk:
-    path:     /admin/galerie/supprimerPhotoOk/{id}
-    defaults: { _controller: JspAdminBundle:Galerie:supprimerPhotoOk }
-    requirements:
-        id: \d+
-jsp_admin_galerie_modifier:
-    path:     /admin/galerie/modifierGalerie/{id}
-    defaults: { _controller: JspAdminBundle:Galerie:modifierGalerie }
-    requirements:
-        id: \d+
-jsp_admin_galerie_supprimerGalerie:
-    path:     /admin/galerie/supprimerGalerie/{id}
-    defaults: { _controller: JspAdminBundle:Galerie:supprimerGalerie }
-    requirements:
-        id: \d+
-jsp_admin_galerie_supprimerGalerieOk:
-    path:     /admin/galerie/supprimerGalerieOk/{id}
-    defaults: { _controller: JspAdminBundle:Galerie:supprimerGalerieOk }
-    requirements:
-        id: \d+
-jsp_admin_galerie_liste:
-    path:     /admin/galerie/{parent}
-    defaults: { _controller: JspAdminBundle:Galerie:liste, parent: root }
 jsp_admin_liens_liste:
     path:     /admin/liens
     defaults: { _controller: JspAdminBundle:Liens:liste }

@@ -18,7 +18,13 @@ class PiquetsRepository extends EntityRepository
     }
     public function purger() {
 			$query = $this->_em->createQuery('DELETE FROM SdisAffichageBundle:Piquets p WHERE p.fin < :now');
-			$query->setParameter('now', new \Datetime(date('Y').'-01-01'));
+			$query->setParameter('now', new \Datetime());
 			$query->execute();
 		}
+    public function selectUser( \Sdis\AffichageBundle\Entity\Personnel $personnel) {
+        $query = $this->_em->createQuery('SELECT p FROM SdisAffichageBundle:Piquets p WHERE p.fin > :now AND ( p.chefIntervention = :user OR p.chefGroupe = :user OR p.chauffeur = :user OR p.intervenant = :user )');
+			$query->setParameter('now', new \Datetime());
+            $query->setParameter('user', $personnel);
+			return $query->getResult();
+    }
 }

@@ -1,0 +1,68 @@
+{% extends '::layoutSDIS.html.twig' %}
+
+{% block corps %}
+
+<h1>MES PIQUETS</h1>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+      {{ personnel }} - <a href="{{ path('sdis_piquets_logout') }}">Se déconnecter</a>
+  </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Du</th>
+            <th>Au</th>
+            <th>Chef d'intervention</th>
+            <th>Chef de groupe</th>
+            <th>Chauffeur</th>
+            <th>Intervenant</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for piquet in piquets %}
+        <tr>
+            <td>{{ piquet.debut|date('d/m/Y') }}</td>
+            <td>{{ piquet.fin|date('d/m/Y') }}</td>
+            <td>{{ piquet.chefIntervention }}</td>
+            <td>{{ piquet.chefGroupe }}</td>
+            <td>{{ piquet.chauffeur }}</td>
+            <td>{{ piquet.intervenant }}</td>
+            <td><a href="{{ path('sdis_piquets_remplacer', { 'id': piquet.id }) }}" title="Se Faire Remplacer"><span class="glyphicon glyphicon-refresh"></span></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if personnel.chauffeur %}
+<hr/>
+
+<h2>ROULAGE VSS</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Du</th>
+            <th>Au</th>
+            <th>Chauffeur 1</th>
+            <th>Chauffeur 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for piquetVss in piquetsVss %}
+        <tr>
+            <td>{{ piquetVss.debut|date('d/m/Y') }}</td>
+            <td>{{ piquetVss.fin|date('d/m/Y') }}</td>
+            <td>{{ piquetVss.chauffeur1 }}</td>
+            <td>{{ piquetVss.chauffeur2 }}</td>
+            <td><a href="{{ path('sdis_piquets_remplacerVss', { 'id': piquetVss.id }) }}" title="Se Faire Remplacer"><span class="glyphicon glyphicon-refresh"></span></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% endblock %}

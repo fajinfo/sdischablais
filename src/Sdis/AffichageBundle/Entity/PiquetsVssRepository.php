@@ -11,14 +11,20 @@ class PiquetsVssRepository extends EntityRepository
                         ->where('p.fin > :now')
                         ->orderBy('p.debut', 'ASC')
                         ->setFirstResult(0)
-                        ->setMaxResults(4)
+                        ->setMaxResults(6)
                         ->setParameter('now', new \DateTime())
                         ->getQuery();
         return $queryBuilder->getResult();
     }
     public function purger() {
 			$query = $this->_em->createQuery('DELETE FROM SdisAffichageBundle:PiquetsVss p WHERE p.fin < :now');
-			$query->setParameter('now', new \Datetime(date('Y').'-01-01'));
+			$query->setParameter('now', new \Datetime());
 			$query->execute();
 		}
+     public function selectUser( \Sdis\AffichageBundle\Entity\Personnel $personnel) {
+        $query = $this->_em->createQuery('SELECT p FROM SdisAffichageBundle:PiquetsVss p WHERE p.fin > :now AND ( p.chauffeur1 = :user OR p.chauffeur2 = :user )');
+			$query->setParameter('now', new \Datetime());
+            $query->setParameter('user', $personnel);
+			return $query->getResult();
+    }
 }

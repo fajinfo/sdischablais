@@ -1,0 +1,13 @@
+{% extends '::layoutSDIS.html.twig' %}
+
+{% block corps %}
+
+<h1>REMPLACEMENT PIQUETS</h1>
+    <p class="alert alert-danger">Il est impératif de prendre contact avec votre remplaçant avant de l'inscrire dans le système</p>
+		<form method="post" {{ form_enctype(form) }} role="form">
+			{{ form_widget(form) }}
+			<div class="btn-group">
+				<input type="submit" class="btn btn-primary" value="Se faire remplacer"/>
+			</div>
+		</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "::layoutAdmin.html.twig" %}
+
+{% block stylesheets %} 
+    {{ parent() }} 
+    {% stylesheets filter='cssrewrite, yui_css' 'css/dropzone.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css">
+    {% endstylesheets %}
+{% endblock %}
+
+{% block corps %}
+    <h1>GALERIE</h1>
+        <h2>Nouvelle Photo</h2>
+        <form method="post" action="{{ oneup_uploader_endpoint('galerie') }}" class="dropzone" id="photos">
+        </form>
+{% endblock %}
+{% block javascript %} 
+{{ parent() }} 
+{% javascripts filter='yui_js' 'js/dropzone.min.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script type="text/javascript">
+    Dropzone.options.photos = {
+        maxFilesize: 40,
+        parallelUploads: 10,
+        headers: {
+            "galerie": "{{ galerie }}"
+        },
+    };
+</script>
+{% endblock %}
