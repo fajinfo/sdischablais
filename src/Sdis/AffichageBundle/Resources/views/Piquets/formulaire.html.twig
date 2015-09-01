@@ -17,4 +17,72 @@
 {% block javascript %}
     {{ parent() }}
     {% include "::datepicker.js.twig" %}
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var cilabel = $("label[for=sdis_affichagebundle_piquets_chefIntervention]");
+            var lienAfficherTout = $('<span style="padding-left:10px;"><a href="#" class="label label-warning">Afficher tous</a></span>');
+            cilabel.append(lienAfficherTout);
+            lienAfficherTout.click(function(e) {
+                e.preventDefault();
+                var $liste = $("#sdis_affichagebundle_piquets_chefIntervention");
+                $liste.empty();
+                $.getJSON( "{{ path('sdis_personnel_liste_json') }}", function(data) {
+                    $.each(data, function( key, val) {
+                        $liste.append('<option value="' + val +'">' + key + '</option>');
+                        return true;
+                    });
+                });
+                $("form").append('<input type="hidden" name="sdis_tous" id="sdis_tous" value="true"/>');
+            });
+            
+            var cilabel = $("label[for=sdis_affichagebundle_piquets_chefGroupe]");
+            var lienAfficherTout = $('<span style="padding-left:10px;"><a href="#" class="label label-warning">Afficher tous</a></span>');
+            cilabel.append(lienAfficherTout);
+            lienAfficherTout.click(function(e) {
+                e.preventDefault();
+                var $liste = $("#sdis_affichagebundle_piquets_chefGroupe");
+                $liste.empty();
+                $.getJSON( "{{ path('sdis_personnel_liste_json') }}", function(data) {
+                    $.each(data, function( key, val) {
+                        $liste.append('<option value="' + val +'">' + key + '</option>');
+                        return true;
+                    });
+                });
+                $("form").append('<input type="hidden" name="sdis_tous" id="sdis_tous" value="true"/>');
+            });
+            
+            var cilabel = $("label[for=sdis_affichagebundle_piquets_chauffeur]");
+            var lienAfficherTout = $('<span style="padding-left:10px;"><a href="#" class="label label-warning">Afficher tous</a></span>');
+            cilabel.append(lienAfficherTout);
+            lienAfficherTout.click(function(e) {
+                e.preventDefault();
+                var $liste = $("#sdis_affichagebundle_piquets_chauffeur");
+                $liste.empty();
+                $.getJSON( "{{ path('sdis_personnel_liste_json') }}", function(data) {
+                    $.each(data, function( key, val) {
+                        $liste.append('<option value="' + val +'">' + key + '</option>');
+                        return true;
+                    });
+                });
+                $("form").append('<input type="hidden" name="sdis_tous" id="sdis_tous" value="true"/>');
+            });
+            
+            var cilabel = $("label[for=sdis_affichagebundle_piquets_intervenant]");
+            var lienAfficherTout = $('<span style="padding-left:10px;"><a href="#" class="label label-warning">Afficher tous</a></span>');
+            cilabel.append(lienAfficherTout);
+            lienAfficherTout.click(function(e) {
+                e.preventDefault();
+                var $liste = $("#sdis_affichagebundle_piquets_intervenant");
+                $liste.empty();
+                $.getJSON( "{{ path('sdis_personnel_liste_json') }}", function(data) {
+                    $.each(data, function( key, val) {
+                        $liste.append('<option value="' + val +'">' + key + '</option>');
+                        return true;
+                    });
+                });
+                $("form").append('<input type="hidden" name="sdis_tous" id="sdis_tous" value="true"/>');
+            });
+        });
+    </script>
 {% endblock %}

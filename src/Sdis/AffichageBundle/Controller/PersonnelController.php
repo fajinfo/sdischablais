@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Sdis\AffichageBundle\Entity\Personnel;
 use Sdis\AffichageBundle\Form\Type\PersonnelType;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class PersonnelController extends Controller
 {
@@ -19,6 +21,24 @@ class PersonnelController extends Controller
             
         return $this->render('SdisAffichageBundle:Personnel:liste.html.twig', array('personnels' => $personnels));
     }
+    /**
+    * @Secure(roles="ROLE_USER")
+    */
+    public function listeJsonAction() {		
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('SdisAffichageBundle:Personnel');
+        $personnels = $repository->findby(array(), array('nom' => 'ASC'));    
+        
+        $array = array();
+        foreach($personnels as $personnel) {
+            $array[$personnel->__toString()] = $personnel->getId();
+        }
+            
+        $response = new JsonResponse();
+        $response->setData($array);
+        return $response;
+    }
+    
 	/**
     * @Secure(roles="ROLE_ADMIN")
     */

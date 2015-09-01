@@ -32,6 +32,9 @@ sdis_affichage_alarmeEventSource:
     defaults: { _controller: SdisAffichageBundle:Alarme:eventSource }
     options:
         expose:  true
+sdis_personnel_liste_json:
+    path:     /personnel.json
+    defaults: { _controller: SdisAffichageBundle:Personnel:listeJson }
 sdis_admin_personnel_liste:
     path:   /admin/personnel
     defaults: { _controller: SdisAffichageBundle:Personnel:liste }
@@ -128,6 +131,9 @@ sdis_piquets_remplacer:
     defaults: { _controller: SdisAffichageBundle:Piquets:remplacer }
     requirements:
         id: \d+
+sdis_piquets_pdf:
+    path:     /piquets/pdf
+    defaults: { _controller: SdisAffichageBundle:Piquets:pdf }
 sdis_piquets_remplacerVss:
     path:     /piquets/remplacerVss/{id}
     defaults: { _controller: SdisAffichageBundle:PiquetsVss:remplacer }

@@ -139,3 +139,9 @@ body {
 .spacer {
 	margin-top: 40px;
 }
+
+@media (max-width: 768px) {
+.fc-day-number {
+    height: 35px;
+}
+}

@@ -12,6 +12,13 @@
 
 {% block corps %}
 <h1>CONTACT</h1>
+<div class="row">
+<div class="col-md-8">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Formulaire de contact</h3>
+  </div>
+  <div class="panel-body">
 	<form method="post" {{ form_enctype(form) }} role="form">
        <div class="form-group">
 			{{ form_label(form.destinataire, "Destinataire") }}
@@ -41,4 +48,22 @@
 		{{ form_rest(form) }}
 		<input type="submit" class="btn btn-primary" />
 	</form>
+	</div>
+	</div>
+	</div>
+	<div class="col-md-4">
+	<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Adresse Postale</h3>
+  </div>
+  <div class="panel-body">
+    SDIS Chablais <br/>
+	Ch. de Marjolin 91 <br/>
+	1860 Aigle<br/><br/><br/>	
+	<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> 024 / 466 12 18 <br/>
+	<span class="glyphicon glyphicon-time" aria-hidden="true"></span> 08h00 - 12h00<br/>
+  </div>
+</div>
+</div>
+</div>
 {% endblock %}
