@@ -55,6 +55,13 @@ class Personnel
     * @ORM\Column(name="chauffeur", type="boolean")
     */
     private $chauffeur;
+	
+	/**
+     *
+     * @ORM\ManyToOne(targetEntity="Sdis\AffichageBundle\Entity\Sections")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $section;
 
 
     /**
@@ -89,6 +96,17 @@ class Personnel
     {
         return $this->grade;
     }
+	
+	/**
+	* Get gradeTri
+	*
+	* @return integer
+	*/
+	public function getGradeTri()
+	{
+		$array = array('Recr' => '100', 'Sap' => '90', 'App' => '80', 'Cpl' => '70', 'Sgt' => '60', 'Sgtm' => '50', 'Adj' => '40', 'Lt' => '30', 'Plt' => '20', 'Cap' => '10', 'Maj' => '0');
+		return $array[$this->grade];
+	}
 
     /**
      * Set nom
@@ -184,5 +202,28 @@ class Personnel
     
     public function __toString() {
         return $this->grade . ' ' . $this->nom . ' ' . $this->prenom;
+    }
+	
+	/**
+     * Set section
+     *
+     * @param Sdis\AffichageBundle\Entity\Sections $section
+     * @return PiquetsVss
+     */
+    public function setSection(\Sdis\AffichageBundle\Entity\Sections $section)
+    {
+        $this->section = $section;
+
+        return $this;
+    }
+
+    /**
+     * Get section
+     *
+     * @return Sdis\AffichageBundle\Entity\Sections 
+     */
+    public function getSection()
+    {
+        return $this->section;
     }
 }

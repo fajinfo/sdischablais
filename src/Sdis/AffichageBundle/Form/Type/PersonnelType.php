@@ -17,7 +17,8 @@ class PersonnelType extends AbstractType {
                 ->add('nom', 'text')
                 ->add('prenom', 'text')
                 ->add('nip', 'integer', array('precision' => 0))
-                ->add('chauffeur', 'checkbox', array('required' => false,));
+                ->add('chauffeur', 'checkbox', array('required' => false,))
+				->add('section', 'entity', array('class' => 'Sdis\AffichageBundle\Entity\Sections', 'property' => 'numero', 'multiple' => false, 'required' => false));
     }
     
     /**
