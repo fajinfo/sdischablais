@@ -1,0 +1,119 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+
+    <h1>SECTIONS</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            {% for section in sections %}
+                <th style="background-color: {{ section.couleur }}">{{ section.numero }}</th>
+            {% endfor %}
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+                <td>
+                    {% for personnel1 in personnelSection.N01.off %}
+                        {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel1.id }) }}">{{ personnel1 }}</a></p>{% else %}<p>{{ personnel1 }}</p>{% endif %}
+                    {%  endfor %}
+                </td>
+            <td>
+                {% for personnel2 in personnelSection.N02.off %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel2.id }) }}">{{ personnel2 }}</a></p>{% else %}<p>{{ personnel2 }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N03.off %}
+                   {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N04.off %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N05.off %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N06.off %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {% for personnel1 in personnelSection.N01.sof %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel1.id }) }}">{{ personnel1 }}</a></p>{% else %}<p>{{ personnel1 }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel2 in personnelSection.N02.sof %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel2.id }) }}">{{ personnel2 }}</a></p>{% else %}<p>{{ personnel2 }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N03.sof %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N04.sof %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N05.sof %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N06.sof %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {% for personnel1 in personnelSection.N01.sap %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel1.id }) }}">{{ personnel1 }}</a></p>{% else %}<p>{{ personnel1 }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel2 in personnelSection.N02.sap %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel2.id }) }}">{{ personnel2 }}</a></p>{% else %}<p>{{ personnel2 }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N03.sap %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N04.sap %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N05.sap %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+            <td>
+                {% for personnel in personnelSection.N06.sap %}
+                    {%  if is_granted('ROLE_ADMIN') %}<p><a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a></p>{% else %}<p>{{ personnel }}</p>{% endif %}
+                {%  endfor %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <h3>EM / DAP / JOUR / POT COMMUN DPS / CHAUFFEURS VSS</h3>
+    <div class="row">
+    {% for personnel in personnelSection.reste %}
+        <div class="col-md-4 col-sm-5">{%  if is_granted('ROLE_ADMIN') %}<a href="{{ path('sdis_admin_personnel_modifier', {'id' : personnel.id }) }}">{{ personnel }}</a>{% else %}<p>{{ personnel }}</p>{% endif %}</div>
+    {%  endfor %}
+    </div>
+{% endblock %}

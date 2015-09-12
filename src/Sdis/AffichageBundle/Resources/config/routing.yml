@@ -56,6 +56,9 @@ sdis_admin_personnel_modifier:
 sdis_admin_personnel_nouveau:
     path:     /admin/personnel/ajouter
     defaults: { _controller: SdisAffichageBundle:Personnel:nouveau }
+sdis_admin_personnel_sections:
+    path:   /admin/sections
+    defaults: { _controller: SdisAffichageBundle:Personnel:sections }
 sdis_admin_utilisationCaserne_liste:
     path:   /admin/utilisationCaserne
     defaults: { _controller: SdisAffichageBundle:utilisationCaserne:liste }

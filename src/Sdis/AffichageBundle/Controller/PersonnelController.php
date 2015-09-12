@@ -99,4 +99,23 @@ class PersonnelController extends Controller
         
         return $this->render('SdisAffichageBundle:Personnel:formulaire.html.twig', array('form' => $form->createView()));
     }
+
+    public function sectionsAction() {
+        $this->denyAccessUnlessGranted('ROLE_OFFICIER', null, 'Vous n\'avez pas les droits nécessaires');
+        $em = $this->getDoctrine()->getManager();
+        $sectionRepo = $em->getRepository('SdisAffichageBundle:Sections');
+        $personnelRepo = $em->getRepository('SdisAffichageBundle:Personnel');
+        $sections = $sectionRepo->findAll();
+
+        $personnelSection = array();
+        foreach($sections as $section) {
+            $personnelSection[$section->getNumero()] = array(
+                'off' => $personnelRepo->getFromSection('off', $section),
+                'sof' => $personnelRepo->getFromSection('sof', $section),
+                'sap' => $personnelRepo->getFromSection('sap', $section)
+            );
+        }
+        $personnelSection['reste'] = $personnelRepo->findBy(array('section' => NULL), array('nom' => 'ASC'));
+        return $this->render('SdisAffichageBundle:Personnel:sections.html.twig', array('sections' => $sections, 'personnelSection' => $personnelSection));
+    }
 }
