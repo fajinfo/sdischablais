@@ -3,8 +3,19 @@
 {% block corps %}
 
 <h1>PIQUETS</h1>
-{% if is_granted('ROLE_ADMIN') %}
-<p><a href="{{ path('sdis_admin_Piquets_nouveau') }}" class="btn btn-success">Nouveau</a></p>
+{% if is_granted('ROLE_QM') %}
+<div class="btn-group" role="group" aria-label="...">
+<a href="{{ path('sdis_admin_Piquets_nouveau') }}" class="btn btn-success">Nouveau</a> <a href="{{ path('sdis_piquets_generer') }}" class="btn btn-default">Générer</a>
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    PDF <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="{{ path('sdis_piquets_pdf', { 'format': 'A4'}) }}">Format A4</a></li>
+    <li><a href="{{ path('sdis_piquets_pdf', { 'format': 'A3'}) }}">Format A3</a></li>
+  </ul>
+</div>
+</div>
 {% endif %}
 <table class="table table-striped">
     <thead>
@@ -23,7 +34,7 @@
         <tr>
             <td>{{ piquet.debut|date('d/m/Y') }}</td>
             <td>{{ piquet.fin|date('d/m/Y') }}</td>
-            <td>{{ piquet.chefIntervention }}</td>
+            <td>{{ piquet.chefIntervention }} {% if piquet.coachOfficier != null %} <br/>{{ piquet.coachOfficier }} {% endif %}</td>
             <td>{{ piquet.chefGroupe }}</td>
             <td>{{ piquet.chauffeur }}</td>
             <td>{{ piquet.intervenant }}</td>

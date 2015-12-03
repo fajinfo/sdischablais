@@ -135,10 +135,16 @@ sdis_piquets_remplacer:
     requirements:
         id: \d+
 sdis_piquets_pdf:
-    path:     /piquets/pdf
-    defaults: { _controller: SdisAffichageBundle:Piquets:pdf }
+    path:     /piquets/pdf/{annee}/{format}
+    defaults: { _controller: SdisAffichageBundle:Piquets:pdf, annee: 0, format: A4}
+    requirements:
+        annee: \d{1,4}
+        format: A4|A3
 sdis_piquets_remplacerVss:
     path:     /piquets/remplacerVss/{id}
     defaults: { _controller: SdisAffichageBundle:PiquetsVss:remplacer }
     requirements:
         id: \d+
+sdis_piquets_generer:
+    path:   /admin/piquets/generation
+    defaults: { _controller: SdisAffichageBundle:Piquets:generatePiquets }

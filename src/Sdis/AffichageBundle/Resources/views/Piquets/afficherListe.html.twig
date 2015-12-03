@@ -27,7 +27,7 @@
         <tr>
             <td>{{ piquet.debut|date('d/m/Y') }}</td>
             <td>{{ piquet.fin|date('d/m/Y') }}</td>
-            <td>{{ piquet.chefIntervention }}</td>
+            <td>{{ piquet.chefIntervention }} {% if piquet.coachOfficier != null %} <br/>{{ piquet.coachOfficier }} {% endif %}</td>
             <td>{{ piquet.chefGroupe }}</td>
             <td>{{ piquet.chauffeur }}</td>
             <td>{{ piquet.intervenant }}</td>

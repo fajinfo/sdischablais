@@ -58,6 +58,12 @@ class Piquets
      * @ORM\JoinColumn(nullable=false)
      */
     private $chefIntervention;
+	/**
+     *
+     * @ORM\ManyToOne(targetEntity="Sdis\AffichageBundle\Entity\Personnel")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $coachOfficier;
 
     /**
      *
@@ -204,6 +210,29 @@ class Piquets
     public function getChefIntervention()
     {
         return $this->chefIntervention;
+    }
+	
+	/**
+     * Set coachOfficier
+     *
+     * @param \Sdis\AffichageBundle\Entity\Personnel $coachOfficier
+     * @return Piquets
+     */
+    public function setCoachOfficier(\Sdis\AffichageBundle\Entity\Personnel $coachOfficier)
+    {
+        $this->coachOfficier = $coachOfficier;
+
+        return $this;
+    }
+
+    /**
+     * Get coachOfficier
+     *
+     * @return \Sdis\AffichageBundle\Entity\Personnel 
+     */
+    public function getCoachOfficier()
+    {
+        return $this->coachOfficier;
     }
 
     /**

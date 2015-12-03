@@ -34,6 +34,13 @@ class PiquetsType extends AbstractType {
                     $qb->setParameter('grades', array('Maj', 'Cap', 'Plt', 'Lt'));
                     return $qb;
                 },))
+				->add('coachOfficier', 'entity', array('required' => false, 'class' => 'SdisAffichageBundle:Personnel', 'query_builder' => function(EntityRepository $er) {
+                    $qb = $er->createQueryBuilder('p');
+                    $qb->andWhere($qb->expr()->in('p.grade', ':grades'));
+                    $qb ->orderBy('p.nom', 'ASC');
+                    $qb->setParameter('grades', array('Maj', 'Cap', 'Plt', 'Lt'));
+                    return $qb;
+                },))
                 ->add('chefGroupe', 'entity', array('class' => 'SdisAffichageBundle:Personnel', 'query_builder' => function(EntityRepository $er) {
                     $qb = $er->createQueryBuilder('p');
                     $qb->andWhere($qb->expr()->in('p.grade', ':grades'));

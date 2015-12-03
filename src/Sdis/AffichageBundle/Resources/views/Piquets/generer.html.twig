@@ -1,0 +1,51 @@
+{% extends '::layoutAdmin.html.twig' %}
+
+{% block corps %}
+
+<h1>GENERATION DES PIQUETS</h1>
+		<form method="post" {{ form_enctype(form) }} role="form">
+			{{ form_widget(form) }}
+			<div class="btn-group">
+				<input type="submit" class="btn btn-primary" value="Créer"/>
+			</div>
+		</form>
+{% endblock %}
+
+{% block javascript %}
+	{{ parent() }}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var $container = $('div#form_piquetsSpeciaux');
+			var $lienAjout = $('<a href="#" id="ajout_piquet_special" class="btn btn-default">Ajouter un piquet</a>');
+			$container.append($lienAjout);
+			$lienAjout.click(function(e) {
+				ajouterCategorie($container);
+				e.preventDefault();
+				return false;
+			});
+			var index = $container.find(':input').length;
+			if (index == 0) {
+				ajouterCategorie($container);
+			} else {
+				$container.children('div').each(function() {
+					ajouterLienSuppression($(this));
+				});
+			}
+			function ajouterCategorie($container) {
+				var $prototype = $($container.attr('data-prototype').replace(/__name__label__/g, 'Piquet n°' + (index + 1)).replace(/__name__/g, index));
+				ajouterLienSuppression($prototype);
+				$container.append($prototype);
+				index++;
+			}
+			function ajouterLienSuppression($prototype) {
+				var $lienSuppression = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+				$prototype.append($lienSuppression);
+				$lienSuppression.click(function(e) {
+							$prototype.remove();
+							e.preventDefault();
+					return false;
+				});
+			}
+		});
+	</script>
+{%  endblock %}

@@ -63,6 +63,12 @@ class Personnel
      */
     private $section;
 
+    /**
+     * @var integer
+     * @ORM\Column(name="nbPiquets", type="integer", nullable=true)
+     */
+    private $nbPiquets;
+
 
     /**
      * Get id
@@ -225,5 +231,20 @@ class Personnel
     public function getSection()
     {
         return $this->section;
+    }
+
+    /**
+     * add nbPiquets
+     * @return Personnel
+     */
+    public function addPiquets() {
+        $this->nbPiquets++;
+    }
+    /**
+     * get nbPiquets
+     * @return integer
+     */
+    public function getNbPiquets() {
+        return $this->nbPiquets;
     }
 }

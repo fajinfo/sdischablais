@@ -27,4 +27,12 @@ class PiquetsRepository extends EntityRepository
             $query->setParameter('user', $personnel);
 			return $query->getResult();
     }
+    public function getLast() {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->orderBy('p.fin', 'DESC')
+            ->setFirstResult(0)
+            ->setMaxResults(1)
+            ->getQuery();
+        return $queryBuilder->getSingleResult();
+    }
 }

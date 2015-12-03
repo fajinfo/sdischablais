@@ -89,7 +89,11 @@
             <td>{{ piquet.debut|date('d/m') }} -> {{ piquet.fin|date('d/m') }}</td>
             <td class="{{ piquet.sectionService }}">{{ piquet.sectionService }}</td>
             <td class="{{ piquet.sectionRenfort }}">{{ piquet.sectionRenfort }}</td>
-            <td>{{ piquet.chefIntervention }}</td>
+			{% if piquet.coachOfficier != null %} 
+				<td style="font-size: 0.8em;">{{ piquet.chefIntervention }}<br/>{{ piquet.coachOfficier }}</td>
+			{% else %}
+				<td>{{ piquet.chefIntervention }}</td>
+			{% endif %}
             <td>{{ piquet.chefGroupe }}</td>
             <td>{{ piquet.chauffeur }}</td>
             <td>{{ piquet.intervenant }}</td>
